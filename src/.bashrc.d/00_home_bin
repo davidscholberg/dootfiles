@@ -1,0 +1,7 @@
+# Set up ~/.local/bin on PATH.
+
+home_bin="$HOME/.local/bin"
+
+if ! [[ "$PATH" =~ "$home_bin:" ]]; then
+    export PATH="$home_bin:$PATH"
+fi

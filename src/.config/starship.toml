@@ -16,6 +16,8 @@ $jobs\
 $container\
 $character"""
 
+add_newline = false
+
 [directory]
 truncation_length = 100
 truncate_to_repo = false

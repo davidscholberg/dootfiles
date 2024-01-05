@@ -1,0 +1,22 @@
+[user]
+    email = recombinant.vector@gmail.com
+    name = David Scholberg
+
+[color]
+    ui = true
+
+[push]
+    default = current
+
+[pull]
+    rebase = true
+
+[alias]
+    in = "!git remote update -p > /dev/null; git log ..@{u}"
+    out = "!git remote update -p > /dev/null; git log @{u}.."
+
+[init]
+    defaultBranch = main
+
+[core]
+    editor = vim

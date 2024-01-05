@@ -1,0 +1,35 @@
+format = """
+$username\
+$hostname\
+$shlvl\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$hg_branch\
+$env_var\
+$custom\
+$cmd_duration\
+$line_break\
+$jobs\
+$container\
+$character"""
+
+[directory]
+truncation_length = 100
+truncate_to_repo = false
+
+[cmd_duration]
+min_time = 1_000
+
+[container]
+symbol = "■"
+style = "bold green dimmed"
+
+[shlvl]
+disabled = false
+format = "[$symbol]($style) "
+repeat = true
+symbol = '❯'
+threshold = 1

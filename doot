@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+set -e
+
+declare -a dotfiles=(
+    ".bashrc.d/starship"
+    ".bashrc.d/vim"
+    ".config/starship.toml"
+    ".gitconfig"
+)
+
+base_src_dir="src"
+base_dest_dir="$HOME"
+
+for dotfile in "${dotfiles[@]}"; do
+    dotfile_src_path="$base_src_dir/$dotfile"
+    dotfile_dest_dir="$base_dest_dir/$(dirname "$dotfile")"
+    mkdir -p "$dotfile_dest_dir"
+    install -C -m 0444 "$dotfile_src_path" "$dotfile_dest_dir"
+done

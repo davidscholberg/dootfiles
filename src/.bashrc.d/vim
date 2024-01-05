@@ -1,0 +1,5 @@
+if which nvim &>/dev/null; then
+    alias vim="nvim"
+fi
+
+alias view="vim -R"

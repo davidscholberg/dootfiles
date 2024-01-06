@@ -1,0 +1,19 @@
+# Bash function that creates a temp dir and cds to it.
+tmpdir() {
+    cd "$(mktemp -d)"
+}
+
+# Bash function that creates a temp file, optionally with the suffix given in the first argument.
+# After creating the file, it is opened in vim.
+tmpfile() {
+    filename=""
+    if [[ -z "$1" ]]; then
+        filename="$(mktemp)"
+    else
+        filename="$(mktemp --suffix=".$1")"
+    fi
+    if ! [[ -z "$filename" ]]; then
+        echo "$filename"
+        vim "$filename"
+    fi
+}

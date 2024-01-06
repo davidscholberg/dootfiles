@@ -4,6 +4,7 @@ set -e
 
 declare -a dotfiles=(
     ".bashrc.d/starship"
+    ".bashrc.d/tmp"
     ".bashrc.d/vim"
     ".bashrc.d/vscode"
     ".config/starship.toml"

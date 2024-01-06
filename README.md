@@ -1,6 +1,6 @@
 # Dootfiles 🎺
 
-This project is meant to manage and track all of my non-sensitive dotfiles and small utility scripts. You probably wouldn't want to use this project as is (unless you are me), but you could use it as a starting point for making your own dotfiles repo.
+This project holds all of my non-sensitive dotfiles as well a simple script for installing them into my home directory. You probably wouldn't want to use this project as is (unless you are me), but you could use it as a starting point for making your own dotfiles repo.
 
 All dotfiles managed by this repo are copied to their intended locations with file permissions set to `444` (read-only). I think that this is better than symlinking for the following reasons:
 

@@ -1,0 +1,10 @@
+# Since https://github.com/owtaylor/toolbox-vscode doesn't have proper handling for when "code" is
+# called outside of a container, we need a wrapper that does this handling.
+
+code() {
+    if [ -f /run/.containerenv ]; then
+        ~/.local/bin/code "$@"
+    else
+        flatpak run com.visualstudio.code "$@"
+    fi
+}

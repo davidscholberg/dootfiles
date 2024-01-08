@@ -3,6 +3,7 @@
 set -e
 
 declare -a dotfiles=(
+    ".bashrc.d/00_home_bin"
     ".bashrc.d/starship"
     ".bashrc.d/tmp"
     ".bashrc.d/vim"

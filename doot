@@ -4,12 +4,14 @@ set -e
 
 declare -a dotfiles=(
     ".bashrc.d/00_home_bin"
+    ".bashrc.d/mpv"
     ".bashrc.d/starship"
     ".bashrc.d/tmp"
     ".bashrc.d/vim"
     ".bashrc.d/vscode"
     ".config/starship.toml"
     ".gitconfig"
+    ".var/app/io.mpv.Mpv/config/mpv/mpv.conf"
 )
 
 base_src_dir="src"

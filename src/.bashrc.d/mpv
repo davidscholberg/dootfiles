@@ -1,0 +1,17 @@
+# Add alias for flatpak version.
+alias mpv="flatpak run io.mpv.Mpv"
+
+# Safe alternative that won't load any configs in the video directory.
+alias mpvs="flatpak run io.mpv.Mpv --no-resume-playback --no-use-filedir-conf"
+
+# Generate a directory-specific mpv config with the given audio and subtitle tracks.
+mpvgenconf() {
+    if [[ -z "$1" || -z "$2" ]]; then
+        echo "usage: $FUNCNAME <audio-track-id> <subtitle-track-id>" >&2
+        return 1
+    fi
+    mpv_config_file="mpv.conf"
+    mpv_config_contents="aid=$1\nsid=$2\n"
+    printf "$mpv_config_contents" > "$mpv_config_file"
+    printf "wrote the following config to ./$mpv_config_file:\n$mpv_config_contents"
+}

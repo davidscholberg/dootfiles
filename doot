@@ -9,6 +9,7 @@ declare -a dotfiles=(
     ".bashrc.d/tmp"
     ".bashrc.d/vim"
     ".bashrc.d/vscode"
+    ".config/nvim/init.lua"
     ".config/starship.toml"
     ".gitconfig"
     ".var/app/io.mpv.Mpv/config/mpv/mpv.conf"

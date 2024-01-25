@@ -13,6 +13,7 @@ declare -a dotfiles=(
     ".config/starship.toml"
     ".gitconfig"
     ".var/app/io.mpv.Mpv/config/mpv/mpv.conf"
+    ".var/app/org.wezfurlong.wezterm/config/wezterm/wezterm.lua"
 )
 
 base_src_dir="src"

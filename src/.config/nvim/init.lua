@@ -5,6 +5,14 @@ vim.g.mapleader = " "
 vim.wo.relativenumber = true
 vim.wo.number = true
 
+-- Global tab and indent settings
+vim.o.smartindent = true
+vim.o.expandtab = true
+vim.o.tabstop = 4
+vim.o.softtabstop = 0
+vim.o.shiftwidth = 0
+vim.o.shiftround = true
+
 -- Bootstrap lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then

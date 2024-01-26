@@ -4,7 +4,7 @@ return {
         lazy = false,
         priority = 1000,
         config = function()
-            require('vscode').load()
+            require("vscode").load()
         end,
     }
 }

@@ -7,7 +7,7 @@ end
 
 -- Set font
 config.font = wezterm.font('Monospace')
-config.font_size = 11.0
+config.font_size = 10.0
 
 -- Set color scheme
 config.color_scheme = 'Vs Code Dark+ (Gogh)'

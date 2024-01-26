@@ -1,5 +1,6 @@
--- Remap leader to spacebar
+-- General keybindings
 vim.g.mapleader = " "
+vim.keymap.set("n", "<leader>e", ":Explore<CR>", {})
 
 -- Enable relative line numbers with absolute line number for current line
 vim.wo.relativenumber = true

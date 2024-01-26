@@ -1,8 +1,9 @@
 -- Remap leader to spacebar
 vim.g.mapleader = " "
 
--- Enable relative line numbers
+-- Enable relative line numbers with absolute line number for current line
 vim.wo.relativenumber = true
+vim.wo.number = true
 
 -- Bootstrap lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"

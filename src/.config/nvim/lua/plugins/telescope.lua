@@ -18,6 +18,10 @@ return {
                             "!.git",
                         },
                     },
+                    live_grep = {
+                        glob_pattern = "!.git",
+                        additional_args = {"--hidden",},
+                    },
                 },
             })
             local builtin = require("telescope.builtin")

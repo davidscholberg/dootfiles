@@ -1,2 +1,0 @@
-# This is not really needed on fedora installs (and maybe other distros), but meh.
-alias view="vim -R"

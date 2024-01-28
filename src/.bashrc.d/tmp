@@ -4,7 +4,7 @@ tmpdir() {
 }
 
 # Bash function that creates a temp file, optionally with the suffix given in the first argument.
-# After creating the file, it is opened in vim.
+# After creating the file, it is opened in nvim.
 tmpfile() {
     filename=""
     if [[ -z "$1" ]]; then
@@ -14,6 +14,6 @@ tmpfile() {
     fi
     if ! [[ -z "$filename" ]]; then
         echo "$filename"
-        vim "$filename"
+        nvim "$filename"
     fi
 }

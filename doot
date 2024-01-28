@@ -7,7 +7,7 @@ declare -a dotfiles=(
     ".bashrc.d/mpv"
     ".bashrc.d/starship"
     ".bashrc.d/tmp"
-    ".bashrc.d/vim"
+    ".bashrc.d/nvim"
     ".bashrc.d/vscode"
     ".config/nvim/init.lua"
     ".config/nvim/lua/plugins/telescope.lua"

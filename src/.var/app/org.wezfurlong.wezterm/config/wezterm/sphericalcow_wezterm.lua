@@ -6,11 +6,10 @@ if wezterm.config_builder then
 end
 
 -- Set font
-config.font = wezterm.font("Monospace")
+config.font = wezterm.font("Source Code Pro")
 config.font_size = 10.0
 
 -- Set color scheme
 config.color_scheme = "Vs Code Dark+ (Gogh)"
 
 return config
-

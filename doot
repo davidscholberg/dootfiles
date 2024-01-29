@@ -16,7 +16,7 @@ declare -a dotfiles=(
     ".config/starship.toml"
     ".gitconfig"
     ".var/app/io.mpv.Mpv/config/mpv/mpv.conf"
-    ".var/app/org.wezfurlong.wezterm/config/wezterm/wezterm.lua"
+    ".var/app/org.wezfurlong.wezterm/config/wezterm/${HOSTNAME}_wezterm.lua"
 )
 
 base_src_dir="src"
@@ -24,7 +24,8 @@ base_dest_dir="$HOME"
 
 for dotfile in "${dotfiles[@]}"; do
     dotfile_src_path="$base_src_dir/$dotfile"
-    dotfile_dest_dir="$base_dest_dir/$(dirname "$dotfile")"
+    dotfile_dest_path="$base_dest_dir/$dotfile"
+    dotfile_dest_dir="$(dirname "$dotfile_dest_path")"
     mkdir -p "$dotfile_dest_dir"
-    install -C -m 0444 "$dotfile_src_path" "$dotfile_dest_dir"
+    install -C -m 0444 -T "$dotfile_src_path" "${dotfile_dest_path/${HOSTNAME}_/}"
 done

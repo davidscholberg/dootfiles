@@ -7,6 +7,8 @@ All dotfiles managed by this repo are copied to their intended locations with fi
 * Copying the files allows you to make local changes inside this repo without having them go "live" right away.
 * Setting the copied files to read-only is a barrier for other programs attempting to make changes to a managed dotfile.
 
+One drawback to this approach is that any file deleted from this repository that has already been deployed will need to be deleted manually from the deployment destination.
+
 ### Usage
 
 To install the dotfiles here to your home directory, just clone this repo and give a lil doot:
@@ -16,3 +18,5 @@ git clone git@github.com:davidscholberg/dootfiles.git && \
 cd dootfiles && \
 ./doot
 ```
+
+If you need different configs for specific hosts, you can prepend the filename with the host's hostname followed by an underscore when you create the file. Then when you add the dotfile to the doot script, you just replace the host's hostname with `${HOSTNAME}`. See the doot script for an example.

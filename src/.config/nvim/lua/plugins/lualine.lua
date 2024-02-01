@@ -6,7 +6,7 @@ return {
         },
         config = function()
             local custom_vscode = require("lualine.themes.vscode")
-            custom_vscode.normal.a.bg = "1d60bf"
+            custom_vscode.normal.a.bg = "#1d60bf"
             custom_vscode.normal.b.fg = "#9cdcfe"
             require("lualine").setup({
                 options = {

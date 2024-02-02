@@ -1,6 +1,10 @@
 -- General keybindings
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>e", ":Explore<CR>", {})
+vim.keymap.set("n", "<leader>y", "\"+y", {})
+vim.keymap.set("v", "<leader>y", "\"+y", {})
+vim.keymap.set("n", "<leader>ly", "0vg_\"+y", {})
+vim.keymap.set("v", "<leader>ly", "0vg_\"+y", {})
 
 -- Enable relative line numbers with absolute line number for current line
 vim.wo.relativenumber = true

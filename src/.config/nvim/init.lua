@@ -1,6 +1,9 @@
+-- Disable netrw to make way for nvim-tree
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- General keybindings
 vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>e", ":Explore<CR>", {})
 vim.keymap.set("n", "<leader>y", "\"+y", {})
 vim.keymap.set("v", "<leader>y", "\"+y", {})
 vim.keymap.set("n", "<leader>ly", "0vg_\"+y", {})

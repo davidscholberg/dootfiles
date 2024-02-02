@@ -14,6 +14,7 @@ declare -a dotfiles=(
     ".config/nvim/lua/conditional/lua_ls_nvim.lua"
     ".config/nvim/lua/plugins/lsp.lua"
     ".config/nvim/lua/plugins/lualine.lua"
+    ".config/nvim/lua/plugins/nvim-tree.lua"
     ".config/nvim/lua/plugins/telescope.lua"
     ".config/nvim/lua/plugins/treesitter.lua"
     ".config/nvim/lua/plugins/vscode.lua"

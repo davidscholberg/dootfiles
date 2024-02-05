@@ -7,8 +7,15 @@ return {
             "nvim-tree/nvim-web-devicons",
         },
         config = function()
-            require("nvim-tree").setup {}
-            vim.keymap.set("n", "<leader>t", ":NvimTreeToggle<CR>", {})
+            require("nvim-tree").setup({
+                view = {
+                    width = {
+                        min = 30,
+                        max = -1,
+                    },
+                },
+            })
+            vim.keymap.set("n", "<leader>t", ":NvimTreeFindFileToggle<CR>", {})
         end,
     }
 }

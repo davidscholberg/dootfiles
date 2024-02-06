@@ -8,6 +8,7 @@ vim.keymap.set("n", "<leader>y", "\"+y", {})
 vim.keymap.set("v", "<leader>y", "\"+y", {})
 vim.keymap.set("n", "<leader>ly", "0vg_\"+y", {})
 vim.keymap.set("v", "<leader>ly", "0vg_\"+y", {})
+vim.keymap.set("n", "<leader>/", ":nohlsearch<CR>", {})
 
 -- Enable relative line numbers with absolute line number for current line
 vim.wo.relativenumber = true

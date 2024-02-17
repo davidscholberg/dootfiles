@@ -11,9 +11,10 @@ vim.keymap.set("v", "<leader>ly", "0vg_\"+y", {})
 vim.keymap.set("n", "<leader>/", ":nohlsearch<CR>", {})
 vim.keymap.set("i", "<C-c>", "<Esc>", {})
 
--- Enable relative line numbers with absolute line number for current line
+-- Line settings
 vim.wo.relativenumber = true
 vim.wo.number = true
+vim.o.scrolloff = 10
 
 -- Global tab and indent settings
 vim.o.smartindent = true

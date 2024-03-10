@@ -20,3 +20,6 @@
 
 [core]
     editor = nvim
+
+[commit]
+    verbose = true

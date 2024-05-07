@@ -8,6 +8,7 @@ local compile_table = {
 -- The format strings must have 1 argument: the source path.
 local interpret_table = {
     py = "python %s",
+    rkt = "racket %s",
 }
 
 -- Executes the current source file with the compiler/interpreter defined for the file type.

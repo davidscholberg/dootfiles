@@ -22,6 +22,7 @@ return {
                     "markdown",
                     "markdown_inline",
                     "python",
+                    "racket",
                     "ssh_config",
                     "typescript",
                     "vim",

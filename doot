@@ -8,6 +8,7 @@ declare -a dotfiles=(
     ".bashrc.d/starship"
     ".bashrc.d/tmp"
     ".bashrc.d/nvim"
+    ".bashrc.d/toolbox"
     ".bashrc.d/vscode"
     ".config/nvim/init.lua"
     ".config/nvim/lua/conditional/init.lua"

@@ -9,6 +9,7 @@ return {
                     "bash",
                     "c",
                     "cmake",
+                    "commonlisp",
                     "cpp",
                     "dockerfile",
                     "git_config",

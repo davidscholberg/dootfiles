@@ -7,6 +7,7 @@ local compile_table = {
 -- Mapping of file extensions to interpret commands.
 -- The format strings must have 1 argument: the source path.
 local interpret_table = {
+    lisp = "clisp %s",
     py = "python %s",
     rkt = "racket %s",
 }

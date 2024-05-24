@@ -4,6 +4,7 @@ vim.g.loaded_netrwPlugin = 1
 
 -- General keybindings
 vim.g.mapleader = " "
+vim.keymap.set("n", "<leader>a", "ggVG", {})
 vim.keymap.set("n", "<leader>y", "\"+y", {})
 vim.keymap.set("v", "<leader>y", "\"+y", {})
 vim.keymap.set("n", "<leader>ly", "0vg_\"+y", {})

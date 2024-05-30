@@ -1,0 +1,16 @@
+# Wrapper for creating an OCI image from a dockerfile using podman.
+mkoci() {
+    image_name="$1"
+    dockerfile="$2"
+
+    podman build --tag "$image_name" --file "$dockerfile"
+}
+
+# Wrapper for creating an OCI image and toolbox container from a dockerfile.
+mktoolbox() {
+    image_name="$1"
+    dockerfile="$2"
+
+    mkoci "$image_name" "$dockerfile" && \
+    toolbox create --image "$image_name" "$image_name"
+}

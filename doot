@@ -5,10 +5,10 @@ set -e
 declare -a dotfiles=(
     ".bashrc.d/00_home_bin"
     ".bashrc.d/mpv"
+    ".bashrc.d/oci"
     ".bashrc.d/starship"
     ".bashrc.d/tmp"
     ".bashrc.d/nvim"
-    ".bashrc.d/toolbox"
     ".bashrc.d/vscode"
     ".config/nvim/init.lua"
     ".config/nvim/lua/conditional/init.lua"

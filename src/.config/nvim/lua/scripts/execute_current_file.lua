@@ -10,6 +10,7 @@ local interpret_table = {
     lisp = "clisp %s",
     py = "python %s",
     rkt = "racket %s",
+    scm = "csi -q %s",
 }
 
 -- Executes the current source file with the compiler/interpreter defined for the file type.

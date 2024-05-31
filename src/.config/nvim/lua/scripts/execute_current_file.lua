@@ -43,3 +43,6 @@ vim.api.nvim_create_user_command(
         nargs = 0,
     }
 )
+
+-- Set keybinding for this command.
+vim.keymap.set("n", "<leader>r", ":w<CR>:ExecuteCurrentFile<CR>", {})

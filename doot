@@ -23,6 +23,7 @@ declare -a dotfiles=(
     ".config/nvim/lua/scripts/execute_current_file.lua"
     ".config/nvim/lua/scripts/init.lua"
     ".config/nvim/lua/scripts/read_into_vnew.lua"
+    ".config/nvim/lua/scripts/terminal_vnew.lua"
     ".config/nvim/lua/util/per_dir_lsp_config.lua"
     ".config/starship.toml"
     ".gitconfig"

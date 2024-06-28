@@ -1,12 +1,10 @@
 -- Allows you to specify an arbitrary set of config files to load if we're in a
 -- particular directory.
 
--- NOTE: currently not used
-
 local home_dir = vim.env.HOME
 local dir_table = {
-    [home_dir .. "/src/git/dootfiles"] = {
-        "conditional.blah_blah",
+    [home_dir .. "/src/git/dengine"] = {
+        "conditional.cmake_build_keybinding",
     },
 }
 

@@ -44,3 +44,6 @@ require("lazy").setup("plugins")
 
 -- Load miscellaneous scripts
 require("scripts")
+
+-- Load conditional scripts
+require("conditional")

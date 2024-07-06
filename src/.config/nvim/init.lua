@@ -11,6 +11,8 @@ vim.keymap.set("n", "<leader>ly", "0vg_\"+y", {})
 vim.keymap.set("v", "<leader>ly", "0vg_\"+y", {})
 vim.keymap.set("n", "<leader>/", ":nohlsearch<CR>", {})
 vim.keymap.set("i", "<C-c>", "<Esc>", {})
+vim.keymap.set("n", "<C-f>", "<C-d>zz", {})
+vim.keymap.set("n", "<C-b>", "<C-u>zz", {})
 
 -- Line settings
 vim.wo.relativenumber = true

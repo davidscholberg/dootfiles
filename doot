@@ -11,7 +11,7 @@ declare -a dotfiles=(
     ".bashrc.d/nvim"
     ".bashrc.d/vscode"
     ".config/nvim/init.lua"
-    ".config/nvim/lua/conditional/cmake_build_keybinding.lua"
+    ".config/nvim/lua/conditional/cmake_keybindings.lua"
     ".config/nvim/lua/conditional/init.lua"
     ".config/nvim/lua/conditional/lua_ls_nvim.lua"
     ".config/nvim/lua/plugins/leap.lua"

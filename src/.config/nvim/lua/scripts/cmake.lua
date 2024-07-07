@@ -32,3 +32,16 @@ vim.api.nvim_create_user_command(
         nargs = 0,
     }
 )
+
+local run_script_name = "cmake_run.sh"
+local cmake_run_command = "!test \\! -f %s && echo 'echo \"edit %s to run the target you want\"' > %s; bash %s"
+vim.api.nvim_create_user_command(
+    "CmakeRun",
+    function ()
+        vim.cmd(cmake_run_command:format(run_script_name, run_script_name, run_script_name, run_script_name))
+    end,
+    {
+        desc = "Runs the shell script ./cmake_run.sh in the current dir.",
+        nargs = 0,
+    }
+)

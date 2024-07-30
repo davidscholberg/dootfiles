@@ -3,6 +3,9 @@
 
 local home_dir = vim.env.HOME
 local dir_table = {
+    [home_dir .. "/src/git/cryptopals"] = {
+        "conditional.cmake_keybindings",
+    },
     [home_dir .. "/src/git/dengine"] = {
         "conditional.cmake_keybindings",
     },

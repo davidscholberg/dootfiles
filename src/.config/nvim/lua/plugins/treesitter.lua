@@ -17,6 +17,7 @@ return {
                     "git_rebase",
                     "gitcommit",
                     "gitignore",
+                    "java",
                     "javascript",
                     "json",
                     "lua",

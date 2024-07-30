@@ -9,6 +9,7 @@ local compile_table = {
 -- The format strings must have 1 argument: the source path.
 local interpret_table = {
     clj = "clojure -M %s",
+    java = "java --enable-preview --source 22 %s",
     lisp = "clisp %s",
     py = "python %s",
     rkt = "racket %s",

@@ -15,7 +15,8 @@ return {
                     },
                 },
             })
-            vim.keymap.set("n", "<leader>e", ":NvimTreeFindFileToggle<CR>", {})
+            vim.keymap.set("n", "<leader>ee", ":NvimTreeFindFileToggle<CR>", {})
+            vim.keymap.set("n", "<leader>ef", ":NvimTreeFocus<CR>", {})
         end,
     }
 }

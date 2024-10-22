@@ -21,6 +21,8 @@
     c = commit
     ca = commit --amend
     ch = checkout
+    ps = push
+    pl = pull
 
 [init]
     defaultBranch = main

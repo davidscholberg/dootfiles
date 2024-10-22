@@ -14,6 +14,13 @@
 [alias]
     in = "!git remote update -p > /dev/null; git log ..@{u}"
     out = "!git remote update -p > /dev/null; git log @{u}.."
+    s = status -s
+    a = add
+    d = diff
+    dc = diff --cached
+    c = commit
+    ca = commit --amend
+    ch = checkout
 
 [init]
     defaultBranch = main

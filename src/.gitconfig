@@ -14,7 +14,7 @@
 [alias]
     in = "!git remote update -p > /dev/null; git log ..@{u}"
     out = "!git remote update -p > /dev/null; git log @{u}.."
-    s = status -s
+    s = status
     a = add
     d = diff
     dc = diff --cached

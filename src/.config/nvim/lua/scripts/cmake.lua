@@ -25,7 +25,7 @@ vim.api.nvim_create_user_command(
 vim.api.nvim_create_user_command(
     "CmakeBuild",
     function ()
-        vim.cmd("!cmake --build build")
+        vim.cmd("!cmake --build build -j $(nproc)")
     end,
     {
         desc = "Builds the currently generated buildsystem.",

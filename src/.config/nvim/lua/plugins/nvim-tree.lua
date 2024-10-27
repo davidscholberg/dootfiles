@@ -13,6 +13,7 @@ return {
                         min = 30,
                         max = -1,
                     },
+                    preserve_window_proportions = true,
                 },
             })
             vim.keymap.set("n", "<leader>ee", ":NvimTreeFindFileToggle<CR>", {})

@@ -1,7 +1,8 @@
 local M = {}
 
--- Adds custom lsp configs for specific directories
+-- Adds custom lsp configs under certain conditions
 function M.add_handlers(handlers)
+    -- Add custom lsp configs if we're in a certain directory
     local home_dir = vim.env.HOME
     local dir_table = {
         [home_dir .. "/src/git/dootfiles"] = {
@@ -14,6 +15,13 @@ function M.add_handlers(handlers)
         for _, handler_adder in ipairs(handler_adders) do
             require(handler_adder).add_handler(handlers)
         end
+    end
+
+    -- The following scripts have their own conditional logic
+    for _, handler_adder in ipairs({
+        "conditional.clangd",
+    }) do
+        require(handler_adder).add_handler(handlers)
     end
 end
 

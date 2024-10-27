@@ -1,5 +1,5 @@
--- Set keybinding to do cmake build in current project.
-vim.keymap.set("n", "<leader>b", ":CmakeBuild<CR>", {})
-
--- Set keybinding to run a cmake target in current project.
-vim.keymap.set("n", "<leader>r", ":CmakeRun<CR>", {})
+-- Set keybindings for cmake build and run within cmake project directories.
+if vim.fn.filereadable(vim.fn.getcwd() .. "/CMakeLists.txt") == 1 then
+    vim.keymap.set("n", "<leader>b", ":CMakeBuild<CR>", {})
+    vim.keymap.set("n", "<leader>r", ":CMakeRun<CR>", {})
+end

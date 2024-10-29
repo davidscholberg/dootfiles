@@ -7,6 +7,7 @@ return {
         config = function()
             local osys = require("cmake-tools.osys")
             require("cmake-tools").setup {
+                cmake_regenerate_on_save = false,
                 cmake_soft_link_compile_commands = false,
                 cmake_compile_commands_from_lsp = true,
                 cmake_build_directory = function()

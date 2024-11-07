@@ -10,6 +10,7 @@ declare -a dotfiles=(
     ".bashrc.d/tmp"
     ".bashrc.d/nvim"
     ".bashrc.d/vscode"
+    ".config/clangd/config.yaml"
     ".config/nvim/init.lua"
     ".config/nvim/lua/conditional/clangd.lua"
     ".config/nvim/lua/conditional/cmake_keybindings.lua"

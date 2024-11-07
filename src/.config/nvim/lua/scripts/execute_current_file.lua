@@ -2,7 +2,7 @@
 -- The format strings must have 3 arguments: the source path and then the exe path twice.
 local compile_table = {
     c = "gcc %s -o %s && %s",
-    cpp = "g++ %s -o %s && %s",
+    cpp = "g++ -Wall -Wextra -Werror -Wpedantic -std=c++23 %s -o %s && %s",
 }
 
 -- Mapping of file extensions to interpret commands.

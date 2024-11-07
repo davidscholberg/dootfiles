@@ -1,0 +1,5 @@
+# Set compile flags for c++ files in tmp dir.
+If:
+  PathMatch: /tmp/.*\.cpp
+CompileFlags:
+  Add: [-Wall, -Wextra, -Werror, -Wpedantic, -std=c++23]

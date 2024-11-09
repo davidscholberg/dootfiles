@@ -15,6 +15,9 @@ return {
                     },
                     preserve_window_proportions = true,
                 },
+                update_focused_file = {
+                    enable = true,
+                },
             })
             vim.keymap.set("n", "<leader>ee", ":NvimTreeFindFileToggle<CR>", {})
             vim.keymap.set("n", "<leader>ef", ":NvimTreeFocus<CR>", {})

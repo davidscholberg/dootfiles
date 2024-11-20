@@ -16,6 +16,7 @@ return {
                     end
                     return "build/${variant:buildType}"
                 end,
+                cmake_virtual_text_support = false,
             }
             vim.keymap.set("n", "<leader>cy", ":CMakeSelectBuildType<CR>", {})
             vim.keymap.set("n", "<leader>ct", ":CMakeSelectLaunchTarget<CR>", {})

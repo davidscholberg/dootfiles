@@ -1,37 +1,56 @@
 format = """
-$username\
-$hostname\
-$shlvl\
 $directory\
 $git_branch\
 $git_commit\
 $git_state\
 $git_status\
-$hg_branch\
-$env_var\
-$custom\
-$cmd_duration\
+$container\
+$hostname\
 $line_break\
 $jobs\
-$container\
+$shlvl\
 $character"""
 
 add_newline = false
 
-[directory]
-truncation_length = 100
-truncate_to_repo = false
-
-[cmd_duration]
-min_time = 1_000
+[character]
+success_symbol = '[>](bold green)'
+error_symbol = '[>](bold green)'
 
 [container]
-symbol = "■"
-style = "bold green dimmed"
+format = "[\n\\[$name\\]]($style)"
+style = 'bold green'
+
+[directory]
+truncation_length = 100
+truncate_to_repo = true
+
+[git_branch]
+format = '[$branch(:$remote_branch)]($style) '
+
+[git_status]
+ahead = '+'
+behind = '-'
+diverged = '+-'
+staged = '&'
+renamed = 'r'
+deleted = 'd'
+
+[hostname]
+ssh_symbol = '@'
+trim_at = ''
+format = "[\n$ssh_symbol$hostname]($style)"
+style = "bold blue"
+
+[jobs]
+symbol_threshold = 1
+number_threshold = 1
+symbol = '+'
 
 [shlvl]
 disabled = false
-format = "[$symbol]($style) "
+format = '[$symbol]($style)'
 repeat = true
-symbol = '❯'
+symbol = '>'
 threshold = 1
+style = 'bold green'

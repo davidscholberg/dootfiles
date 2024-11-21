@@ -24,9 +24,10 @@ vim.keymap.set("n", "<leader>k", "<C-w>k", {})
 vim.keymap.set("n", "<leader>l", "<C-w>l", {})
 
 -- Tab handling
-vim.keymap.set("n", "<leader>z", ":tab split<CR>", {})
+vim.keymap.set("n", "<leader>z", ":$tab split<CR>", {})
 vim.keymap.set("n", "<leader>t", ":tabnew<CR>", {})
 vim.keymap.set("n", "<leader>w", ":tabclose<CR>", {})
+vim.api.nvim_command("autocmd TabClosed * tabprevious")
 
 -- Terminal settings
 vim.keymap.set("t", "<C-\\>", "<C-\\><C-n>", {})

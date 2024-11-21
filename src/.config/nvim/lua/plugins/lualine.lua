@@ -11,6 +11,7 @@ return {
             require("lualine").setup({
                 options = {
                     theme = custom_vscode,
+                    always_show_tabline = false,
                 },
                 sections = {
                     lualine_c = {{
@@ -22,6 +23,17 @@ return {
                     lualine_c = {{
                         "filename",
                         path = 1,
+                    }},
+                },
+                tabline = {
+                    lualine_a = {{
+                        'tabs',
+                        mode = 2,
+                        use_mode_colors = false,
+                        tabs_color = {
+                            active = {bg = '#555555', fg = '#cccccc', gui = ''},
+                            inactive = {bg = '#333333', fg = '#666666', gui = ''},
+                        },
                     }},
                 },
             })

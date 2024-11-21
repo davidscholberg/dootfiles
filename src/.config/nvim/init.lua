@@ -2,8 +2,10 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
--- General keybindings
+-- Map leader to space
 vim.g.mapleader = " "
+
+-- General keybindings
 vim.keymap.set("n", "<leader>a", "ggVG", {})
 vim.keymap.set("n", "<leader>y", "\"+y", {})
 vim.keymap.set("v", "<leader>y", "\"+y", {})
@@ -14,12 +16,22 @@ vim.keymap.set("n", "<leader>3", ":b#<CR>", {})
 vim.keymap.set("i", "<C-c>", "<Esc>", {})
 vim.keymap.set("n", "<C-f>", "<C-d>zz", {})
 vim.keymap.set("n", "<C-b>", "<C-u>zz", {})
+
+-- Split navigation
 vim.keymap.set("n", "<leader>h", "<C-w>h", {})
 vim.keymap.set("n", "<leader>j", "<C-w>j", {})
 vim.keymap.set("n", "<leader>k", "<C-w>k", {})
 vim.keymap.set("n", "<leader>l", "<C-w>l", {})
+
+-- Tab handling
 vim.keymap.set("n", "<leader>z", ":tab split<CR>", {})
+vim.keymap.set("n", "<leader>t", ":tabnew<CR>", {})
 vim.keymap.set("n", "<leader>w", ":tabclose<CR>", {})
+
+-- Terminal settings
+vim.keymap.set("t", "<C-\\>", "<C-\\><C-n>", {})
+vim.api.nvim_command("autocmd TermOpen * startinsert")
+vim.api.nvim_command("autocmd TermOpen * setlocal nonumber norelativenumber")
 
 -- Line settings
 vim.wo.relativenumber = true

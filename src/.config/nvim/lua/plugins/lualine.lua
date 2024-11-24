@@ -15,12 +15,22 @@ return {
                     section_separators = "",
                     component_separators = "",
                     icons_enabled = false,
+                    globalstatus = true,
+                    ignore_focus = {
+                        "NvimTree",
+                    },
                 },
                 sections = {
+                    lualine_a = {{
+                        "mode",
+                        fmt = string.lower,
+                    }},
+                    lualine_b = {'branch', 'diagnostics'},
                     lualine_c = {{
                         "filename",
                         path = 1,
                     }},
+                    lualine_x = {'encoding', 'fileformat'},
                 },
                 inactive_sections = {
                     lualine_c = {{
@@ -40,6 +50,8 @@ return {
                     }},
                 },
             })
+            -- Disable default mode indicator
+            vim.opt.showmode = false
         end,
     }
 }

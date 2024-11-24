@@ -12,6 +12,9 @@ return {
                 options = {
                     theme = custom_vscode,
                     always_show_tabline = false,
+                    section_separators = "",
+                    component_separators = "",
+                    icons_enabled = false,
                 },
                 sections = {
                     lualine_c = {{

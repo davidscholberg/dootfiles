@@ -44,7 +44,7 @@ return {
                         mode = 2,
                         use_mode_colors = false,
                         tabs_color = {
-                            active = {bg = '#555555', fg = '#cccccc', gui = ''},
+                            active = {bg = custom_vscode.normal.a.bg, fg = '#ffffff', gui = ''},
                             inactive = {bg = '#333333', fg = '#666666', gui = ''},
                         },
                     }},

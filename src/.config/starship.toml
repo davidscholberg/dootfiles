@@ -52,5 +52,7 @@ disabled = false
 format = '[$symbol]($style)'
 repeat = true
 symbol = '>'
+# threshold should be 2 and repeat_offset should be 1, but there's a bug with the shlvl handling in bash.
 threshold = 1
+repeat_offset = 0
 style = 'bold green'

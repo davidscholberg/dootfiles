@@ -32,7 +32,7 @@ vim.api.nvim_command("autocmd TabClosed * tabprevious")
 -- Terminal settings
 vim.keymap.set("t", "<C-\\>", "<C-\\><C-n>", {})
 vim.api.nvim_command("autocmd TermOpen * startinsert")
-vim.api.nvim_command("autocmd TermOpen * setlocal nonumber norelativenumber")
+vim.api.nvim_command("autocmd TermOpen * setlocal nonumber norelativenumber scrolloff=0")
 
 -- Line settings
 vim.wo.relativenumber = true

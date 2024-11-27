@@ -1,0 +1,16 @@
+-- vim: filetype=config-value
+
+defaults:
+  nick: "dhs"
+  username: "dhs"
+  realname: "dhs"
+  tls: yes
+
+servers:
+  * name: "libera"
+    hostname: "irc.libera.chat"
+    autoconnect: yes
+    sasl:
+      username: "dhs"
+      -- TODO: handle password properly
+      password: "password-here"

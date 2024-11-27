@@ -11,6 +11,5 @@ servers:
     hostname: "irc.libera.chat"
     autoconnect: yes
     sasl:
-      username: "dhs"
-      -- TODO: handle password properly
-      password: "password-here"
+      mechanism: external
+    tls-client-cert: "~/.config/glirc/libera.pem"

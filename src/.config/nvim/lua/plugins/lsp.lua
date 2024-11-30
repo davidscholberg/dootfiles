@@ -39,7 +39,7 @@ return {
             end
             local lspconfig_handlers = {default_setup}
             -- Add directory-specific lsp configs
-            require("conditional.custom_lsp_config").add_handlers(lspconfig_handlers)
+            require("include.custom_lsp_config").add_handlers(lspconfig_handlers)
 
             require("mason").setup({})
             require("mason-lspconfig").setup({

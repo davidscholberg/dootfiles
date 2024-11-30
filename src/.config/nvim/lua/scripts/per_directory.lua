@@ -1,14 +1,10 @@
--- Scripts that contain their own conditional logic:
-
-require("conditional.cmake_keybindings")
-
 -- The below allows you to specify an arbitrary set of config files to load if we're in a particular
 -- directory (currently unused).
 
 -- local home_dir = vim.env.HOME
 -- local dir_table = {
 --     [home_dir .. "/src/git/foo-project"] = {
---         "conditional.bar_script",
+--         "include.bar_script",
 --     },
 -- }
 -- 

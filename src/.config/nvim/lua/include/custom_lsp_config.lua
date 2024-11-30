@@ -6,7 +6,7 @@ function M.add_handlers(handlers)
     local home_dir = vim.env.HOME
     local dir_table = {
         [home_dir .. "/src/git/dootfiles"] = {
-            "conditional.lua_ls_nvim",
+            "include.lua_ls_nvim",
         },
     }
 
@@ -19,7 +19,7 @@ function M.add_handlers(handlers)
 
     -- The following scripts have their own conditional logic
     for _, handler_adder in ipairs({
-        "conditional.clangd",
+        "include.clangd",
     }) do
         require(handler_adder).add_handler(handlers)
     end

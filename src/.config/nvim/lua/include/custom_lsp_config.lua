@@ -3,9 +3,8 @@ local M = {}
 -- Adds custom lsp configs under certain conditions
 function M.add_handlers(handlers)
     -- Add custom lsp configs if we're in a certain directory
-    local home_dir = vim.env.HOME
     local dir_table = {
-        [home_dir .. "/src/git/dootfiles"] = {
+        [vim.fn.expand("~/src/git/dootfiles")] = {
             "include.lua_ls_nvim",
         },
     }

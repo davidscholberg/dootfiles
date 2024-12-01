@@ -17,11 +17,11 @@ vim.keymap.set("i", "<C-c>", "<Esc>", {})
 vim.keymap.set("n", "<C-f>", "<C-d>zz", {})
 vim.keymap.set("n", "<C-b>", "<C-u>zz", {})
 
--- Split navigation
-vim.keymap.set("n", "<leader>h", "<C-w>h", {})
-vim.keymap.set("n", "<leader>j", "<C-w>j", {})
-vim.keymap.set("n", "<leader>k", "<C-w>k", {})
-vim.keymap.set("n", "<leader>l", "<C-w>l", {})
+-- Window navigation
+vim.keymap.set("n", "<C-h>", "<C-w>h", {})
+vim.keymap.set("n", "<C-j>", "<C-w>j", {})
+vim.keymap.set("n", "<C-k>", "<C-w>k", {})
+vim.keymap.set("n", "<C-l>", "<C-w>l", {})
 
 -- Tab handling
 vim.keymap.set("n", "<leader>z", ":$tab split<CR>", {})

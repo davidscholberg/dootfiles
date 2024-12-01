@@ -28,6 +28,7 @@ declare -a dotfiles=(
     ".config/nvim/lua/plugins/vscode.lua"
     ".config/nvim/lua/scripts/cmake_keybindings.lua"
     ".config/nvim/lua/scripts/execute_current_file.lua"
+    ".config/nvim/lua/scripts/general_terminal.lua"
     ".config/nvim/lua/scripts/init.lua"
     ".config/nvim/lua/scripts/per_directory.lua"
     ".config/nvim/lua/scripts/read_into_vnew.lua"

@@ -18,4 +18,9 @@ function M.focus(terminal_id)
     vim.cmd(tostring(terminal_id) .. "Topen")
 end
 
+-- Runs the command on the given terminal id.
+function M.execute(terminal_id, cmd)
+    vim.cmd(tostring(terminal_id) .. "T " .. cmd)
+end
+
 return M

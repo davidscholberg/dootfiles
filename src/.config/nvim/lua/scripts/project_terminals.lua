@@ -1,5 +1,5 @@
 -- Create discrete terminal buffers that each have a project-specific function (configure, build,
--- run, test, debug), and easily be able to open and/or send configurable commands to each.
+-- run, test, debug), and effortlessly open and/or send configurable commands to each.
 
 local paths = require("include.paths")
 local strings = require("include.strings")
@@ -12,8 +12,7 @@ return {
     run_once = false,
     focus_key_binding = "",
     run_key_binding = "",
-}
-]]
+}]]
 
 local plugin_name = "project_terminals"
 
@@ -26,6 +25,7 @@ local function get_data_dir()
     end
 
     data_dir = paths.get_project_data_path(plugin_name)
+    -- TODO: making the directory needs to be a separate action THIS IS BAD
     vim.fn.mkdir(data_dir, "p")
     return data_dir
 end
@@ -100,7 +100,9 @@ local function create_autocmds_for_config(config_path)
         return
     end
 
-    print("before setting autocmds")
+    -- Stupid workaround so that windows paths can work with autocmds
+    config_path = config_path:gsub([[\]], "/")
+
     vim.api.nvim_create_autocmd(
         "BufNewFile",
         {
@@ -110,6 +112,7 @@ local function create_autocmds_for_config(config_path)
                 print("inside new file autocmd")
                 local lines = strings.split(custom_default_template, "\n")
                 vim.api.nvim_buf_set_lines(e.buf, 0, 1, true, lines)
+                -- TODO: set buffer modified attribute
             end,
         }
     )

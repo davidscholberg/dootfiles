@@ -25,9 +25,11 @@ local function get_data_dir()
     end
 
     data_dir = paths.get_project_data_path(plugin_name)
-    -- TODO: making the directory needs to be a separate action THIS IS BAD
-    vim.fn.mkdir(data_dir, "p")
     return data_dir
+end
+
+local function create_data_dir()
+    vim.fn.mkdir(get_data_dir(), "p")
 end
 
 local function focus_terminal(terminal_state)
@@ -143,6 +145,7 @@ vim.api.nvim_create_user_command(
         local config_name = opts.fargs[1]:lower()
         local config_path = get_data_dir() .. vim.fn.expand("/") .. config_name .. ".lua"
         create_autocmds_for_config(config_path)
+        create_data_dir()
         vim.cmd("edit " .. config_path)
     end,
     {

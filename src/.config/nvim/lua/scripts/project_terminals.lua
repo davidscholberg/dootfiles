@@ -6,8 +6,8 @@ local strings = require("include.strings")
 local terminals = require("include.terminals")
 
 local custom_default_template = [[
+-- config for %s terminal
 return {
-    name = "",
     cmd = "",
     run_once = false,
     focus_key_binding = "",
@@ -33,6 +33,10 @@ local function create_data_dir()
     vim.fn.mkdir(get_data_dir(), "p")
 end
 
+local function get_config_name_from_path(config_path)
+    return config_path:gsub([[.+[\/](.+)%.lua$]], "%1")
+end
+
 local function focus_terminal(terminal_state)
     if terminal_state.terminal_id == 0 then
         terminal_state.terminal_id = terminals.open_new()
@@ -54,15 +58,15 @@ local function run_terminal_cmd(terminal_state)
 end
 
 -- Setup state and keybindings for the given terminal config.
-local function process_terminal_config(terminal_config)
-    if terminal_states[terminal_config.name] == nil then
-        terminal_states[terminal_config.name] = {
+local function process_terminal_config(config_name, terminal_config)
+    if terminal_states[config_name] == nil then
+        terminal_states[config_name] = {
             terminal_id = 0,
             ran_at_least_once = false,
         }
     end
 
-    local terminal_state = terminal_states[terminal_config.name]
+    local terminal_state = terminal_states[config_name]
     local old_config = terminal_state.config
     terminal_state.config = terminal_config
 
@@ -95,7 +99,7 @@ end
 -- Create autocmds for editing the given config file.
 -- TODO: possibly just have one set of autocmds that match all configs, and have them always be present.
 local function create_autocmds_for_config(config_path)
-    local config_name = config_path:gsub([[.+[\/](.+)%.lua$]], "%1")
+    local config_name = get_config_name_from_path(config_path)
     local group_name = plugin_name .. "_" .. config_name
     local group_id = vim.api.nvim_create_augroup(group_name, {clear = false})
 
@@ -114,7 +118,7 @@ local function create_autocmds_for_config(config_path)
             pattern = config_path,
             callback = function(e)
                 print("inside new file autocmd")
-                local lines = strings.split(custom_default_template, "\n")
+                local lines = strings.split(custom_default_template:format(config_name), "\n")
                 if lines[#lines] == "" then
                     table.remove(lines)
                 end
@@ -137,7 +141,7 @@ local function create_autocmds_for_config(config_path)
                     print("error: " .. err)
                     return
                 end
-                process_terminal_config(config_func())
+                process_terminal_config(config_name, config_func())
             end,
         }
     )
@@ -164,11 +168,14 @@ vim.api.nvim_create_user_command(
     local configs_glob = get_data_dir() .. vim.fn.expand("/") .. "*.lua"
     for _, config_path in ipairs(vim.fn.glob(configs_glob, false, true)) do
         create_autocmds_for_config(config_path)
+
         local config_func, err = loadfile(config_path)
         if not config_func then
             print("error: " .. err)
             return
         end
-        process_terminal_config(config_func())
+
+        local config_name = get_config_name_from_path(config_path)
+        process_terminal_config(config_name, config_func())
     end
 end)()

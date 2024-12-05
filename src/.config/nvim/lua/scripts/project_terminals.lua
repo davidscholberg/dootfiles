@@ -12,7 +12,8 @@ return {
     run_once = false,
     focus_key_binding = "",
     run_key_binding = "",
-}]]
+}
+]]
 
 local plugin_name = "project_terminals"
 
@@ -114,6 +115,9 @@ local function create_autocmds_for_config(config_path)
             callback = function(e)
                 print("inside new file autocmd")
                 local lines = strings.split(custom_default_template, "\n")
+                if lines[#lines] == "" then
+                    table.remove(lines)
+                end
                 vim.api.nvim_buf_set_lines(e.buf, 0, 1, true, lines)
                 vim.api.nvim_set_option_value("modified", true, {buf = e.buf})
             end,

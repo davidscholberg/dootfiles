@@ -41,7 +41,6 @@ local function focus_terminal(terminal_state)
 end
 
 local function run_terminal_cmd(terminal_state)
-    -- TODO: make the cursor go to the bottom of the screen on focus
     if terminal_state.terminal_id == 0 then
         terminal_state.terminal_id = terminals.open_new()
         terminals.execute(terminal_state.terminal_id, terminal_state.config.cmd)
@@ -49,6 +48,8 @@ local function run_terminal_cmd(terminal_state)
         terminals.execute(terminal_state.terminal_id, terminal_state.config.cmd)
         terminals.focus(terminal_state.terminal_id)
     end
+
+    vim.api.nvim_feedkeys("G", "x", true)
 end
 
 -- Setup state and keybindings for the given terminal config.

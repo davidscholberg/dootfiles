@@ -115,7 +115,7 @@ local function create_autocmds_for_config(config_path)
                 print("inside new file autocmd")
                 local lines = strings.split(custom_default_template, "\n")
                 vim.api.nvim_buf_set_lines(e.buf, 0, 1, true, lines)
-                -- TODO: set buffer modified attribute
+                vim.api.nvim_set_option_value("modified", true, {buf = e.buf})
             end,
         }
     )

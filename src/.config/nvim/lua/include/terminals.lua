@@ -1,26 +1,63 @@
--- Convenience functions for creating terminal buffers (requires kassio/neoterm)
+-- Convenience functions for creating named terminal buffers.
 
 local M = {}
 
--- Opens a new terminal and returns its terminal id, which can be used to subsequently focus and send commands to the associated terminal.
--- The terminal id is an int greater than 0.
-function M.open_new()
-    local tls_output = vim.api.nvim_exec2("Tls", {output = true}).output
-    local _, newline_count = tls_output:gsub("\n", "\n")
-    local terminal_id = newline_count + 1
+local terminals = {}
 
-    vim.cmd("Tnew")
-    return terminal_id
+-- Get name of shell used in terminals. For now assumes that only the global value is used.
+local function get_shell_name()
+    return vim.fs.basename(vim.o.shell):gsub([[(.+)%.exe]], "%1")
 end
 
--- Focus the terminal associated with the given terminal id.
-function M.focus(terminal_id)
-    vim.cmd(tostring(terminal_id) .. "Topen")
+-- Returns the appropriate line ending to use depending on what shell is being used.
+local function get_shell_line_ending()
+    local shell_name = get_shell_name()
+
+    if
+        shell_name == "cmd"
+        or shell_name == "powershell"
+        or shell_name == "pwsh"
+    then
+        return "\r\n"
+    end
+
+    return "\n"
 end
 
--- Runs the command on the given terminal id.
-function M.execute(terminal_id, cmd)
-    vim.cmd(tostring(terminal_id) .. "T " .. cmd)
+-- Gets bufnr of terminal buffer associated with name. Returns -1 if the buffer doesn't exist.
+local function get_terminal_bufnr(name)
+    if terminals[name] ~= nil then
+        local bufnr = terminals[name].bufnr
+
+        if vim.api.nvim_buf_is_loaded(bufnr) then
+            return bufnr
+        end
+    end
+
+    return -1
+end
+
+-- Focus the terminal associated with the given name. Creates terminal if it doesn't exist.
+function M.focus(name)
+    local bufnr = get_terminal_bufnr(name)
+
+    if bufnr ~= -1 then
+        vim.cmd.buffer(bufnr)
+    else
+        vim.cmd.terminal()
+        bufnr = vim.fn.bufnr()
+        terminals[name] = {
+            bufnr = bufnr,
+            channel = vim.api.nvim_get_option_value("channel", {buf = bufnr}),
+        }
+    end
+end
+
+-- Focus the named terminal and run the command on it. Creates terminal if it doesn't exist.
+function M.execute(name, cmd)
+    M.focus(name)
+    vim.api.nvim_feedkeys("G", "x", true)
+    vim.api.nvim_chan_send(terminals[name].channel, cmd .. get_shell_line_ending())
 end
 
 return M

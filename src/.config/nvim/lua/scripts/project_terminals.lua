@@ -1,5 +1,7 @@
 -- Create discrete terminal buffers that each have a project-specific function (configure, build,
--- run, test, debug), and effortlessly open and/or send configurable commands to each.
+-- run, test, debug, etc), and effortlessly open and/or send configurable commands to each.
+
+-- TODO: add shared terminal that configs can opt to use instead of a unique one.
 
 local paths = require("include.paths")
 local strings = require("include.strings")
@@ -9,6 +11,7 @@ local custom_default_template = [[
 -- config for %s terminal
 return {
     cmd = "",
+    dep = "",
     run_once = false,
     focus_key_binding = "",
     run_key_binding = "",
@@ -37,31 +40,20 @@ local function get_config_name_from_path(config_path)
     return config_path:gsub([[.+[\/](.+)%.lua$]], "%1")
 end
 
-local function focus_terminal(terminal_state)
-    if terminal_state.terminal_id == 0 then
-        terminal_state.terminal_id = terminals.open_new()
-    else
-        terminals.focus(terminal_state.terminal_id)
-    end
-end
+local function build_cmd_dep_chain(terminal_state)
+    local config = terminal_state.config
 
-local function run_terminal_cmd(terminal_state)
-    if terminal_state.terminal_id == 0 then
-        terminal_state.terminal_id = terminals.open_new()
-        terminals.execute(terminal_state.terminal_id, terminal_state.config.cmd)
-    else
-        terminals.execute(terminal_state.terminal_id, terminal_state.config.cmd)
-        terminals.focus(terminal_state.terminal_id)
+    if config.dep == nil then
+        return config.cmd
     end
 
-    vim.api.nvim_feedkeys("G", "x", true)
+    return build_cmd_dep_chain(terminal_states[config.dep]) .. " && " .. config.cmd
 end
 
 -- Setup state and keybindings for the given terminal config.
 local function process_terminal_config(config_name, terminal_config)
     if terminal_states[config_name] == nil then
         terminal_states[config_name] = {
-            terminal_id = 0,
             ran_at_least_once = false,
         }
     end
@@ -83,7 +75,7 @@ local function process_terminal_config(config_name, terminal_config)
         "n",
         terminal_state.config.focus_key_binding,
         function()
-            focus_terminal(terminal_state)
+            terminals.focus(config_name)
         end
     )
 
@@ -91,7 +83,8 @@ local function process_terminal_config(config_name, terminal_config)
         "n",
         terminal_state.config.run_key_binding,
         function()
-            run_terminal_cmd(terminal_state)
+            local cmd = build_cmd_dep_chain(terminal_state)
+            terminals.execute(config_name, cmd)
         end
     )
 end

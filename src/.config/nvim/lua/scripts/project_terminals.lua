@@ -40,6 +40,10 @@ local function get_config_name_from_path(config_path)
     return config_path:gsub([[.+[\/](.+)%.lua$]], "%1")
 end
 
+local function get_configs_glob()
+    return get_data_dir() .. vim.fn.expand("/") .. "*.lua"
+end
+
 local function build_cmd_dep_chain(terminal_state)
     local config = terminal_state.config
 
@@ -140,9 +144,28 @@ local function create_autocmds_for_config(config_path)
     )
 end
 
+-- Create command that will list out existing configs for the current project.
+vim.api.nvim_create_user_command(
+    "PTls",
+    function (_)
+        if next(terminal_states) == nil then
+            print("(no configs present)")
+            return
+        end
+
+        for config_name, _ in pairs(terminal_states) do
+            print(config_name)
+        end
+    end,
+    {
+        desc = "List existing config names for the current project",
+        nargs = 0,
+    }
+)
+
 -- Create command that will allow us to create a custom project terminal.
 vim.api.nvim_create_user_command(
-    "PtEdit",
+    "PTedit",
     function (opts)
         local config_name = opts.fargs[1]:lower()
         local config_path = get_data_dir() .. vim.fn.expand("/") .. config_name .. ".lua"
@@ -158,8 +181,7 @@ vim.api.nvim_create_user_command(
 
 -- Load any existing config on startup
 ;(function()
-    local configs_glob = get_data_dir() .. vim.fn.expand("/") .. "*.lua"
-    for _, config_path in ipairs(vim.fn.glob(configs_glob, false, true)) do
+    for _, config_path in ipairs(vim.fn.glob(get_configs_glob(), false, true)) do
         create_autocmds_for_config(config_path)
 
         local config_func, err = loadfile(config_path)

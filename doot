@@ -13,6 +13,8 @@ declare -a dotfiles=(
     ".config/clangd/config.yaml"
     ".config/glirc/config"
     ".config/nvim/init.lua"
+    ".config/nvim/bin/pt_cmd_done.bat"
+    ".config/nvim/bin/pt_cmd_done.sh"
     ".config/nvim/lua/include/clangd.lua"
     ".config/nvim/lua/include/custom_lsp_config.lua"
     ".config/nvim/lua/include/lua_ls_nvim.lua"

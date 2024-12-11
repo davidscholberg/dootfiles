@@ -4,26 +4,6 @@ local M = {}
 
 local terminals = {}
 
--- Get name of shell used in terminals. For now assumes that only the global value is used.
-local function get_shell_name()
-    return vim.fs.basename(vim.o.shell):gsub([[(.+)%.exe]], "%1")
-end
-
--- Returns the appropriate line ending to use depending on what shell is being used.
-local function get_shell_line_ending()
-    local shell_name = get_shell_name()
-
-    if
-        shell_name == "cmd"
-        or shell_name == "powershell"
-        or shell_name == "pwsh"
-    then
-        return "\r\n"
-    end
-
-    return "\n"
-end
-
 -- Gets bufnr of terminal buffer associated with name. Returns -1 if the buffer doesn't exist.
 local function get_terminal_bufnr(name)
     if terminals[name] ~= nil then
@@ -35,6 +15,26 @@ local function get_terminal_bufnr(name)
     end
 
     return -1
+end
+
+-- Get name of shell used in terminals. For now assumes that only the global value is used.
+function M.get_shell_name()
+    return vim.fs.basename(vim.o.shell):gsub([[(.+)%.exe]], "%1")
+end
+
+-- Returns the appropriate line ending to use depending on what shell is being used.
+function M.get_shell_line_ending()
+    local shell_name = M.get_shell_name()
+
+    if
+        shell_name == "cmd"
+        or shell_name == "powershell"
+        or shell_name == "pwsh"
+    then
+        return "\r\n"
+    end
+
+    return "\n"
 end
 
 -- Focus the terminal associated with the given name. Creates terminal if it doesn't exist.
@@ -57,7 +57,7 @@ end
 function M.execute(name, cmd)
     M.focus(name)
     vim.api.nvim_feedkeys("G", "x", true)
-    vim.api.nvim_chan_send(terminals[name].channel, cmd .. get_shell_line_ending())
+    vim.api.nvim_chan_send(terminals[name].channel, cmd .. M.get_shell_line_ending())
 end
 
 return M

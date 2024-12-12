@@ -33,7 +33,7 @@ end
 
 local function update_path_env_var()
     local field_sep = ":"
-    if vim.fn.has("win32") then
+    if vim.fn.has("win32") == 1 then
         field_sep = ";"
     end
 
@@ -42,7 +42,7 @@ end
 
 local function get_signal_shell_script_name()
     local shell_script_name = "pt_cmd_done."
-    if vim.fn.has("win32") then
+    if vim.fn.has("win32") == 1 then
         shell_script_name = shell_script_name .. "bat"
     else
         shell_script_name = shell_script_name .. "sh"

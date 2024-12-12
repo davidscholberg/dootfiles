@@ -55,9 +55,19 @@ end
 
 -- Focus the named terminal and run the command on it. Creates terminal if it doesn't exist.
 function M.execute(name, cmd)
-    M.focus(name)
-    vim.api.nvim_feedkeys("G", "x", true)
-    vim.api.nvim_chan_send(terminals[name].channel, cmd .. M.get_shell_line_ending())
+    -- Ensure we're in normal mode because otherwise nvim gets wonky when the feedkeys call happens
+    -- below and we're still in insert mode.
+    vim.cmd.stopinsert()
+
+    -- Defer next calls because I think insert mode won't stop until the next event loop cycle.
+    vim.defer_fn(
+        function()
+            M.focus(name)
+            vim.api.nvim_feedkeys("G", "x", true)
+            vim.api.nvim_chan_send(terminals[name].channel, cmd .. M.get_shell_line_ending())
+        end,
+        0
+    )
 end
 
 return M

@@ -18,7 +18,6 @@ function M.add_handlers(handlers)
 
     -- The following scripts have their own conditional logic
     for _, handler_adder in ipairs({
-        "include.clangd",
     }) do
         require(handler_adder).add_handler(handlers)
     end

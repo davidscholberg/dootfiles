@@ -1,4 +1,3 @@
-require("scripts.cmake_keybindings")
 require("scripts.execute_current_file")
 require("scripts.general_terminal")
 require("scripts.help_no_split")

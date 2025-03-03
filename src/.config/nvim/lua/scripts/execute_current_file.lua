@@ -2,6 +2,7 @@
 -- The format strings must have 3 arguments: the source path and then the exe path twice.
 local compile_table = {
     c = "gcc %s -o %s && %s",
+    carbon = "carbon compile --output=test.carbon.o %s && carbon link --output=%s test.carbon.o && %s",
     cpp = "g++ -Wall -Wextra -Werror -Wpedantic -std=c++23 %s -o %s && %s",
 }
 

@@ -26,6 +26,7 @@ declare -a dotfiles=(
     ".config/nvim/lua/plugins/nvim-tree.lua"
     ".config/nvim/lua/plugins/telescope.lua"
     ".config/nvim/lua/plugins/treesitter.lua"
+    ".config/nvim/lua/plugins/vim-carbon-lang.lua"
     ".config/nvim/lua/plugins/vscode.lua"
     ".config/nvim/lua/scripts/execute_current_file.lua"
     ".config/nvim/lua/scripts/general_terminal.lua"

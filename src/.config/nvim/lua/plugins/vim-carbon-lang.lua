@@ -1,7 +1,7 @@
 return {
     {
         "carbon-language/vim-carbon-lang",
-        lazy = false,
+        ft = {"carbon"},
         init = function()
             -- config goes here
         end,

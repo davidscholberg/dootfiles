@@ -96,8 +96,16 @@ local function create_termrequest_autocmd()
             group = group_id,
             pattern = "*",
             callback = function(e)
-                local remaining_cmds_str = e.data:gsub("^.+8084;%-%-remaining ([%w_%-:]+)$", "%1")
-                if remaining_cmds_str == e.data then
+                local request_sequence = e.data
+                if type(request_sequence) == "table" then
+                    request_sequence = request_sequence.sequence
+                else
+                    print("error: unexpected type for request_sequence: " .. type(request_sequence))
+                    return
+                end
+
+                local remaining_cmds_str = request_sequence:gsub("^.+8084;%-%-remaining ([%w_%-:]+)$", "%1")
+                if remaining_cmds_str == request_sequence then
                     return
                 end
 

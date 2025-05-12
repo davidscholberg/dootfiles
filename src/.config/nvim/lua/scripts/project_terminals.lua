@@ -99,7 +99,7 @@ local function create_termrequest_autocmd()
                 local request_sequence = e.data
                 if type(request_sequence) == "table" then
                     request_sequence = request_sequence.sequence
-                else
+                elseif type(request_sequence) ~= "string" then
                     print("error: unexpected type for request_sequence: " .. type(request_sequence))
                     return
                 end

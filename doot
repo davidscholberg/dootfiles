@@ -11,6 +11,7 @@ declare -a dotfiles=(
     ".bashrc.d/nvim"
     ".bashrc.d/vscode"
     ".config/clangd/config.yaml"
+    ".config/gdb/gdbinit"
     ".config/glirc/config"
     ".config/nvim/init.lua"
     ".config/nvim/bin/pt_cmd_done.bat"

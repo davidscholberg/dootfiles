@@ -36,6 +36,7 @@ declare -a dotfiles=(
     ".config/nvim/lua/scripts/init.lua"
     ".config/nvim/lua/scripts/per_directory.lua"
     ".config/nvim/lua/scripts/project_terminals.lua"
+    ".config/nvim/lua/scripts/read_into_tabnew.lua"
     ".config/nvim/lua/scripts/read_into_vnew.lua"
     ".config/nvim/lua/scripts/terminal_vnew.lua"
     ".config/starship.toml"

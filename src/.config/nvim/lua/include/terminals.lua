@@ -31,7 +31,7 @@ function M.get_shell_line_ending()
         or shell_name == "powershell"
         or shell_name == "pwsh"
     then
-        return "\r\n"
+        return "\r"
     end
 
     return "\n"

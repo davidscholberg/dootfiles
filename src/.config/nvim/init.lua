@@ -17,6 +17,16 @@ vim.keymap.set("i", "<C-c>", "<Esc>", {})
 vim.keymap.set("n", "<C-f>", "<C-d>zz", {})
 vim.keymap.set("n", "<C-b>", "<C-u>zz", {})
 
+-- Scroll type shit
+vim.opt.wrap = false
+vim.opt.colorcolumn = "100"
+vim.keymap.set("n", "<M-h>", "zh", {})
+vim.keymap.set("n", "<M-j>", "<C-e>", {})
+vim.keymap.set("n", "<M-k>", "<C-y>", {})
+vim.keymap.set("n", "<M-l>", "zl", {})
+vim.opt.list = true
+vim.opt.listchars = {extends = ">", precedes = "<"}
+
 -- Window navigation
 vim.keymap.set("n", "<C-h>", "<C-w>h", {})
 vim.keymap.set("n", "<C-j>", "<C-w>j", {})

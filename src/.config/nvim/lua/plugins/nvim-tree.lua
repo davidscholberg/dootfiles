@@ -23,6 +23,14 @@ return {
                     enable = true,
                 },
             })
+
+            -- style the floating window to match what telescope does
+            -- idk if it's just me but this highlight api seems fucky
+            local normal_bg = vim.api.nvim_get_hl(0, {name = "Normal"}).bg
+            vim.api.nvim_set_hl(0, "NvimTreeNormal", {bg = normal_bg})
+            vim.api.nvim_set_hl(0, "NvimTreeNormalFloat", {bg = normal_bg})
+            vim.api.nvim_set_hl(0, "NvimTreeNormalFloatBorder", {bg = normal_bg, fg = "#4d4d4d"})
+
             vim.keymap.set("n", "<leader>ee", ":NvimTreeFindFileToggle<CR>", {})
             vim.keymap.set("n", "<leader>ef", ":NvimTreeFocus<CR>", {})
         end,

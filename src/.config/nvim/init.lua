@@ -5,6 +5,9 @@ vim.g.loaded_netrwPlugin = 1
 -- Map leader to space
 vim.g.mapleader = " "
 
+-- Disable intro message
+vim.opt.shortmess:append("I")
+
 -- General keybindings
 vim.keymap.set("n", "<leader>a", "ggVG", {})
 vim.keymap.set("n", "<leader>y", "\"+y", {})

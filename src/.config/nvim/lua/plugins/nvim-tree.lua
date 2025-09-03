@@ -31,8 +31,7 @@ return {
             vim.api.nvim_set_hl(0, "NvimTreeNormalFloat", {bg = normal_bg})
             vim.api.nvim_set_hl(0, "NvimTreeNormalFloatBorder", {bg = normal_bg, fg = "#4d4d4d"})
 
-            vim.keymap.set("n", "<leader>ee", ":NvimTreeFindFileToggle<CR>", {})
-            vim.keymap.set("n", "<leader>ef", ":NvimTreeFocus<CR>", {})
+            vim.keymap.set("n", "<leader>e", ":NvimTreeFindFileToggle<CR>", {})
         end,
     }
 }

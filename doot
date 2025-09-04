@@ -18,6 +18,7 @@ declare -a dotfiles=(
     ".config/nvim/bin/pt_cmd_done.sh"
     ".config/nvim/lua/include/carbon_ls.lua"
     ".config/nvim/lua/include/custom_lsp_config.lua"
+    ".config/nvim/lua/include/dart_ls.lua"
     ".config/nvim/lua/include/lua_ls_nvim.lua"
     ".config/nvim/lua/include/paths.lua"
     ".config/nvim/lua/include/strings.lua"

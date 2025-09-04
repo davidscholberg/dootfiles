@@ -1,5 +1,6 @@
 -- Add custom language servers that mason doesn't handle.
 require("include.carbon_ls")
+require("include.dart_ls")
 
 local M = {}
 

@@ -12,6 +12,7 @@ return {
                     "cmake",
                     "commonlisp",
                     "cpp",
+                    "dart",
                     "dockerfile",
                     "git_config",
                     "git_rebase",

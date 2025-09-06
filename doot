@@ -54,6 +54,11 @@ for dotfile in "${dotfiles[@]}"; do
     dotfile_src_path="$base_src_dir/$dotfile"
     dotfile_dest_path="$base_dest_dir/$dotfile"
 
+    if [[ ! -f "$dotfile_src_path" ]]; then
+        echo "warning: $dotfile_src_path not found"
+	continue
+    fi
+
     dotfile_dest_dir="$(dirname "$dotfile_dest_path")"
     mkdir -p "$dotfile_dest_dir"
 

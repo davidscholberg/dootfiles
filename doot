@@ -20,17 +20,18 @@ declare -a dotfiles=(
     ".config/nvim/lua/include/custom_lsp_config.lua"
     ".config/nvim/lua/include/dart_ls.lua"
     ".config/nvim/lua/include/lua_ls_nvim.lua"
+    ".config/nvim/lua/include/paq_spec.lua"
     ".config/nvim/lua/include/paths.lua"
     ".config/nvim/lua/include/strings.lua"
     ".config/nvim/lua/include/terminals.lua"
-    ".config/nvim/lua/plugins/leap.lua"
-    ".config/nvim/lua/plugins/lsp.lua"
-    ".config/nvim/lua/plugins/lualine.lua"
-    ".config/nvim/lua/plugins/nvim-tree.lua"
-    ".config/nvim/lua/plugins/telescope.lua"
-    ".config/nvim/lua/plugins/treesitter.lua"
-    ".config/nvim/lua/plugins/vim-carbon-lang.lua"
-    ".config/nvim/lua/plugins/vscode.lua"
+    ".config/nvim/lua/plugin_config/init.lua"
+    ".config/nvim/lua/plugin_config/leap.lua"
+    ".config/nvim/lua/plugin_config/lsp.lua"
+    ".config/nvim/lua/plugin_config/lualine.lua"
+    ".config/nvim/lua/plugin_config/nvim-tree.lua"
+    ".config/nvim/lua/plugin_config/telescope.lua"
+    ".config/nvim/lua/plugin_config/treesitter.lua"
+    ".config/nvim/lua/plugin_config/vscode.lua"
     ".config/nvim/lua/scripts/execute_current_file.lua"
     ".config/nvim/lua/scripts/general_terminal.lua"
     ".config/nvim/lua/scripts/help_no_split.lua"
@@ -63,3 +64,6 @@ for dotfile in "${dotfiles[@]}"; do
 
     install -C -m "$file_mode" -T "$dotfile_src_path" "${dotfile_dest_path/${HOSTNAME}_/}"
 done
+
+# install/clean nvim plugins
+nvim --headless -u NONE -c "luafile $HOME/.config/nvim/lua/include/paq_spec.lua" -c PaqClean -c PaqInstall -c qa

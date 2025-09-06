@@ -59,22 +59,11 @@ vim.o.softtabstop = 0
 vim.o.shiftwidth = 0
 vim.o.shiftround = true
 
--- Bootstrap lazy
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-    vim.fn.system({
-        "git",
-        "clone",
-        "--filter=blob:none",
-        "https://github.com/folke/lazy.nvim.git",
-        "--branch=stable",
-        lazypath,
-    })
-end
-vim.opt.rtp:prepend(lazypath)
+-- Load plugin spec
+require("include.paq_spec")
 
--- Setup and configure plugins
-require("lazy").setup("plugins")
+-- Do plugin-specific setup
+require("plugin_config")
 
 -- Load miscellaneous scripts
 require("scripts")

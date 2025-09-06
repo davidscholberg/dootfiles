@@ -1,0 +1,7 @@
+require("plugin_config.vscode")
+require("plugin_config.lualine")
+require("plugin_config.nvim-tree")
+require("plugin_config.telescope")
+require("plugin_config.treesitter")
+require("leap").create_default_mappings()
+require("plugin_config.lsp")

@@ -68,3 +68,4 @@ done
 
 # install/clean nvim plugins
 nvim --headless -u NONE -c "luafile $HOME/.config/nvim/lua/include/paq_spec.lua" -c PaqClean -c PaqInstall -c qa
+printf "\n"

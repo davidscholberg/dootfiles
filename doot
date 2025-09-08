@@ -56,7 +56,7 @@ for dotfile in "${dotfiles[@]}"; do
 
     if [[ ! -f "$dotfile_src_path" ]]; then
         echo "warning: $dotfile_src_path not found"
-	continue
+        continue
     fi
 
     dotfile_dest_dir="$(dirname "$dotfile_dest_path")"

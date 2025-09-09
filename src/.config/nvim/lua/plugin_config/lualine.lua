@@ -11,7 +11,6 @@ require("lualine").setup({
         icons_enabled = false,
         globalstatus = true,
         ignore_focus = {
-            "NvimTree",
         },
     },
     sections = {

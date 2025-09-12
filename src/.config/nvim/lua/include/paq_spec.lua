@@ -46,7 +46,4 @@ paq({
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
     },
-
-    -- vscode theme
-    "Mofiqul/vscode.nvim",
 })

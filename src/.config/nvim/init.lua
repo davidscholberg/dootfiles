@@ -22,13 +22,13 @@ vim.keymap.set("n", "<C-b>", "<C-u>zz", {})
 
 -- Scroll type shit
 vim.opt.wrap = false
-vim.opt.colorcolumn = "100"
 vim.keymap.set("n", "<M-h>", "zh", {})
 vim.keymap.set("n", "<M-j>", "<C-e>", {})
 vim.keymap.set("n", "<M-k>", "<C-y>", {})
 vim.keymap.set("n", "<M-l>", "zl", {})
 vim.opt.list = true
 vim.opt.listchars = {extends = ">", precedes = "<"}
+vim.opt.fillchars = {eob = " "}
 
 -- Window navigation
 vim.keymap.set("n", "<C-h>", "<C-w>h", {})
@@ -58,6 +58,18 @@ vim.o.tabstop = 4
 vim.o.softtabstop = 0
 vim.o.shiftwidth = 0
 vim.o.shiftround = true
+
+-- Make floating window styling more consistent
+vim.api.nvim_set_hl(0, "NormalFloat", {link = "Normal"})
+
+-- Set extra colors for better syntax highlighting
+vim.api.nvim_set_hl(0, "Statement", {fg = "#98b5f9"})
+vim.api.nvim_set_hl(0, "Constant", {fg = "#ffc290"})
+vim.api.nvim_set_hl(0, "PreProc", {fg = "#ffc290"})
+vim.api.nvim_set_hl(0, "Type", {fg = "#8efb8e"})
+vim.api.nvim_set_hl(0, "Special", {fg = "#8efb8e"})
+vim.api.nvim_set_hl(0, "Identifier", {link = "@variable"})
+vim.api.nvim_set_hl(0, "String", {fg = "#c1fec1"})
 
 -- Load plugin spec
 require("include.paq_spec")

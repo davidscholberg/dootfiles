@@ -1,10 +1,9 @@
-local custom_vscode = require("lualine.themes.vscode")
-custom_vscode.normal.a.bg = "#1d60bf"
-custom_vscode.normal.b.fg = "#9cdcfe"
+local custom_codedark = require("lualine.themes.codedark")
+custom_codedark.terminal = custom_codedark.insert
 
 require("lualine").setup({
     options = {
-        theme = custom_vscode,
+        theme = custom_codedark,
         always_show_tabline = false,
         section_separators = "",
         component_separators = "",
@@ -36,10 +35,6 @@ require("lualine").setup({
             'tabs',
             mode = 2,
             use_mode_colors = false,
-            tabs_color = {
-                active = {bg = custom_vscode.normal.a.bg, fg = '#ffffff', gui = ''},
-                inactive = {bg = '#333333', fg = '#666666', gui = ''},
-            },
         }},
     },
 })

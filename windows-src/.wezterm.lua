@@ -10,7 +10,10 @@ config.font = wezterm.font("Source Code Pro")
 config.font_size = 11.0
 
 -- Set color scheme
-config.color_scheme = "Vs Code Dark+ (Gogh)"
+local custom_colorscheme = wezterm.color.get_builtin_schemes()["Builtin Tango Dark"]
+custom_colorscheme.background = "#14161b"
+config.color_schemes = {["Builtin Tango Dark Custom"] = custom_colorscheme}
+config.color_scheme = "Builtin Tango Dark Custom"
 
 -- Set window title
 wezterm.on(

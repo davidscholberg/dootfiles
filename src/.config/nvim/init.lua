@@ -59,6 +59,10 @@ vim.o.softtabstop = 0
 vim.o.shiftwidth = 0
 vim.o.shiftround = true
 
+-- Allow project-specific configs to be loaded
+vim.opt.exrc = true
+vim.opt.secure = true
+
 -- Make floating window styling more consistent
 vim.api.nvim_set_hl(0, "NormalFloat", {link = "Normal"})
 

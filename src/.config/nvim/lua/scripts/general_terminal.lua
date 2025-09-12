@@ -1,13 +1,8 @@
--- Create general terminal buffer and assign key combo to focus it.
+-- Create general terminal buffer with key combo to focus it.
 
-local terminals = require("include.terminals")
-
-vim.keymap.set(
-    "n",
-    "<leader>1",
-    function ()
-        terminals.focus("general")
-    end,
-    {}
-)
-
+require("include.terminals").setup({
+    {
+        name = "general",
+        focus_key_binding = "<leader>1",
+    },
+})

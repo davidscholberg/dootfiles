@@ -4,6 +4,18 @@ local M = {}
 
 local terminals = {}
 
+-- Create table for a new managed terminal with default values.
+local function new_terminal_table()
+    return {
+        config = {
+            focus_key_binding = nil,
+            cmds = {},
+        },
+        bufnr = nil,
+        channel = nil,
+    }
+end
+
 -- Gets bufnr of terminal buffer associated with name. Returns -1 if the buffer doesn't exist.
 local function get_terminal_bufnr(name)
     local terminal = terminals[name]
@@ -49,7 +61,7 @@ function M.focus(name)
         vim.cmd.terminal()
         bufnr = vim.fn.bufnr()
         if terminals[name] == nil then
-            terminals[name] = {}
+            terminals[name] = new_terminal_table()
         end
         terminals[name].bufnr = bufnr
         terminals[name].channel = vim.api.nvim_get_option_value("channel", {buf = bufnr})
@@ -57,53 +69,36 @@ function M.focus(name)
 end
 
 -- Focus the named terminal and run the command on it. Creates terminal if it doesn't exist.
+-- Do not try to call this if nvim is not in normal mode or some fucky shit may happen.
 function M.execute(name, cmd)
-    -- Ensure we're in normal mode because otherwise nvim gets wonky when the feedkeys call happens
-    -- below and we're still in insert mode.
-    vim.cmd.stopinsert()
-
-    -- Defer next calls because I think insert mode won't stop until the next event loop cycle.
-    vim.defer_fn(
-        function()
-            M.focus(name)
-            vim.api.nvim_feedkeys("G", "x", true)
-            vim.api.nvim_chan_send(terminals[name].channel, cmd .. M.get_shell_line_ending())
-        end,
-        0
-    )
+    M.focus(name)
+    vim.api.nvim_feedkeys("G", "x", true)
+    vim.api.nvim_chan_send(terminals[name].channel, cmd .. M.get_shell_line_ending())
 end
 
 -- Setup keybindings to focus named terminals or run cmds in them.
 -- Can be called multiple times and the configs will be merged.
 function M.setup(terminal_configs)
-    for _, terminal_config in ipairs(terminal_configs) do
-        local terminal_name = terminal_config.name
+    for terminal_name, terminal_config in pairs(terminal_configs) do
         if terminals[terminal_name] == nil then
-            terminals[terminal_name] = {}
+            terminals[terminal_name] = new_terminal_table()
         end
 
         local terminal = terminals[terminal_name]
         local old_config = terminal.config
         terminal.config = terminal_config
 
-        if old_config ~= nil then
-            if old_config.focus_key_binding ~= "" then
-                vim.keymap.del("n", old_config.focus_key_binding)
-            end
+        if old_config.focus_key_binding ~= nil then
+            vim.keymap.del("n", old_config.focus_key_binding)
+        end
 
-            if old_config.cmds ~= nil then
-                for _, cmd_config in ipairs(old_config.cmds) do
-                    if cmd_config.run_key_binding ~= "" then
-                        vim.keymap.del("n", cmd_config.run_key_binding)
-                    end
-                end
+        for _, cmd_config in ipairs(old_config.cmds) do
+            if cmd_config.run_key_binding ~= nil then
+                vim.keymap.del("n", cmd_config.run_key_binding)
             end
         end
 
-        if
-            terminal.config.focus_key_binding ~= nil
-            and terminal.config.focus_key_binding ~= ""
-        then
+        if terminal.config.focus_key_binding ~= nil then
             vim.keymap.set(
                 "n",
                 terminal.config.focus_key_binding,
@@ -113,20 +108,19 @@ function M.setup(terminal_configs)
             )
         end
 
-        if terminal.config.cmds ~= nil then
-            for _, cmd_config in ipairs(terminal.config.cmds) do
-                if
-                    cmd_config.run_key_binding ~= nil
-                    and cmd_config.run_key_binding ~= ""
-                then
-                    vim.keymap.set(
-                        "n",
-                        cmd_config.run_key_binding,
-                        function()
-                            M.execute(terminal_name, cmd_config.cmd)
-                        end
-                    )
-                end
+        if terminal.config.cmds == nil then
+            terminal.config.cmds = {}
+        end
+
+        for _, cmd_config in ipairs(terminal.config.cmds) do
+            if cmd_config.run_key_binding ~= nil then
+                vim.keymap.set(
+                    "n",
+                    cmd_config.run_key_binding,
+                    function()
+                        M.execute(terminal_name, cmd_config.cmd)
+                    end
+                )
             end
         end
     end

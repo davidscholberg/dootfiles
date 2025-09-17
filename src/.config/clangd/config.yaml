@@ -1,3 +1,9 @@
+# Set compile flags for c files in tmp dir.
+If:
+  PathMatch: /tmp/.*\.c
+CompileFlags:
+  Add: [-Wall, -Wextra, -Werror, -Wpedantic, -std=c89]
+
 # Set compile flags for c++ files in tmp dir.
 If:
   PathMatch: /tmp/.*\.cpp

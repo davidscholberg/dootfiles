@@ -75,8 +75,12 @@ vim.api.nvim_set_hl(0, "Type", {fg = colors.green})
 vim.api.nvim_set_hl(0, "Special", {fg = colors.green})
 vim.api.nvim_set_hl(0, "String", {fg = colors.light_green})
 vim.api.nvim_set_hl(0, "Identifier", {link = "@variable"})
+vim.api.nvim_set_hl(0, "@variable.builtin", {link = "@variable"})
 vim.api.nvim_set_hl(0, "@constructor", {link = "Function"})
+vim.api.nvim_set_hl(0, "@function.builtin", {link = "Function"})
+vim.api.nvim_set_hl(0, "@string.regexp", {link = "String"})
 vim.api.nvim_set_hl(0, "@string.escape", {link = "Constant"})
+vim.api.nvim_set_hl(0, "@constant.builtin", {link = "Constant"})
 vim.api.nvim_set_hl(0, "@type.builtin", {link = "Type"})
 
 -- Load plugin spec

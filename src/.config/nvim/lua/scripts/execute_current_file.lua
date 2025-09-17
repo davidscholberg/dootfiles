@@ -41,7 +41,7 @@ vim.api.nvim_create_user_command(
         end
 
         -- Run the command
-        vim.cmd("!" .. command)
+        require("include.terminals").execute("general", command)
     end,
     {
         desc = "Executes the current source file with the compiler/interpreter defined for the file type.",

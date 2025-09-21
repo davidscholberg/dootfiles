@@ -30,16 +30,23 @@ vim.opt.list = true
 vim.opt.listchars = {extends = ">", precedes = "<"}
 vim.opt.fillchars = {eob = " "}
 
--- Window navigation
+-- Window handling
 vim.keymap.set("n", "<C-h>", "<C-w>h", {})
 vim.keymap.set("n", "<C-j>", "<C-w>j", {})
 vim.keymap.set("n", "<C-k>", "<C-w>k", {})
 vim.keymap.set("n", "<C-l>", "<C-w>l", {})
+vim.keymap.set("n", "<leader>w", function ()
+    -- close the first floating window found
+    for _, win_id in ipairs(vim.api.nvim_list_wins()) do
+        if vim.api.nvim_win_get_config(win_id).relative ~= "" then
+            vim.api.nvim_win_close(win_id, true)
+            break
+        end
+    end
+end, {})
 
 -- Tab handling
 vim.keymap.set("n", "<leader>z", ":$tab split<CR>", {})
-vim.keymap.set("n", "<leader>t", ":tabnew<CR>", {})
-vim.keymap.set("n", "<leader>w", ":tabclose<CR>", {})
 vim.api.nvim_command("autocmd TabClosed * tabprevious")
 
 -- Terminal settings

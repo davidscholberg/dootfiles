@@ -12,29 +12,25 @@ vim.opt.shortmess:append("I")
 vim.keymap.set("n", "<leader>a", "ggVG", {})
 vim.keymap.set("n", "<leader>y", "\"+y", {})
 vim.keymap.set("v", "<leader>y", "\"+y", {})
-vim.keymap.set("n", "<leader>ly", "0vg_\"+y", {})
-vim.keymap.set("v", "<leader>ly", "0vg_\"+y", {})
 vim.keymap.set("n", "<leader>/", ":nohlsearch<CR>", {})
 vim.keymap.set("n", "<leader>`", ":b#<CR>", {})
 vim.keymap.set("i", "<C-c>", "<Esc>", {})
-vim.keymap.set("n", "<C-f>", "<C-d>zz", {})
-vim.keymap.set("n", "<C-b>", "<C-u>zz", {})
 
 -- Scroll type shit
 vim.opt.wrap = false
-vim.keymap.set("n", "<M-h>", "zh", {})
-vim.keymap.set("n", "<M-j>", "<C-e>", {})
-vim.keymap.set("n", "<M-k>", "<C-y>", {})
-vim.keymap.set("n", "<M-l>", "zl", {})
+vim.keymap.set("n", "<C-h>", "<ScrollWheelLeft>", {})
+vim.keymap.set("n", "<C-j>", "<ScrollWheelDown>", {})
+vim.keymap.set("n", "<C-k>", "<ScrollWheelUp>", {})
+vim.keymap.set("n", "<C-l>", "<ScrollWheelRight>", {})
 vim.opt.list = true
 vim.opt.listchars = {extends = ">", precedes = "<"}
 vim.opt.fillchars = {eob = " "}
 
 -- Window handling
-vim.keymap.set("n", "<C-h>", "<C-w>h", {})
-vim.keymap.set("n", "<C-j>", "<C-w>j", {})
-vim.keymap.set("n", "<C-k>", "<C-w>k", {})
-vim.keymap.set("n", "<C-l>", "<C-w>l", {})
+vim.keymap.set("n", "<M-h>", "<C-w>h", {})
+vim.keymap.set("n", "<M-j>", "<C-w>j", {})
+vim.keymap.set("n", "<M-k>", "<C-w>k", {})
+vim.keymap.set("n", "<M-l>", "<C-w>l", {})
 vim.keymap.set("n", "<leader>w", function ()
     -- close the first floating window found
     for _, win_id in ipairs(vim.api.nvim_list_wins()) do
@@ -56,7 +52,6 @@ vim.api.nvim_command("autocmd TermOpen * setlocal nonumber norelativenumber scro
 -- Line settings
 vim.wo.relativenumber = true
 vim.wo.number = true
-vim.o.scrolloff = 10
 
 -- Global tab and indent settings
 vim.o.smartindent = true

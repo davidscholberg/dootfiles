@@ -25,6 +25,7 @@ vim.keymap.set("n", "<C-l>", "<ScrollWheelRight>", {})
 vim.opt.list = true
 vim.opt.listchars = {extends = ">", precedes = "<"}
 vim.opt.fillchars = {eob = " "}
+vim.cmd("autocmd FileType markdown,text setlocal wrap linebreak")
 
 -- Window handling
 vim.keymap.set("n", "<M-h>", "<C-w>h", {})

@@ -29,5 +29,8 @@ configs.setup({
         "vimdoc",
     },
     sync_install = false,
-    highlight = { enable = true },
+    highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = {"clojure"},
+    },
 })

@@ -13,7 +13,7 @@ local interpret_table = {
     fs = "gforth %s -e bye",
     java = "java --enable-preview --source 22 %s",
     lisp = "clisp %s",
-    py = "python %s",
+    py = "python3 %s",
     rkt = "racket %s",
     scm = "csi -qb %s",
 }

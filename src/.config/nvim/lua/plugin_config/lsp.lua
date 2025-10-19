@@ -60,6 +60,9 @@ vim.lsp.enable("clangd")
 -- Setup clojure-lsp
 vim.lsp.enable("clojure_lsp")
 
+-- Setup haskell-language-server
+vim.lsp.enable("hls")
+
 -- Setup general lsp keybindings
 vim.keymap.set("n", "gl", "<cmd>lua vim.diagnostic.open_float({border = \"rounded\"})<cr>")
 vim.keymap.set("n", "[d", "<cmd>lua vim.diagnostic.jump({count = -1, float = {border = \"rounded\"}})<cr>")

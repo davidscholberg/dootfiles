@@ -13,6 +13,7 @@ configs.setup({
         "git_rebase",
         "gitcommit",
         "gitignore",
+        "haskell",
         "java",
         "javascript",
         "json",

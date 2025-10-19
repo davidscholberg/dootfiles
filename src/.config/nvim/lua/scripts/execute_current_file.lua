@@ -4,6 +4,7 @@ local compile_table = {
     c = "gcc -Wall -Wextra -Werror -Wpedantic -std=c89 %s -o %s && %s",
     carbon = "(carbon compile --output=execute_current_file.carbon.o %s && carbon link --output=%s execute_current_file.carbon.o && %s); rm -f execute_current_file.carbon.o",
     cpp = "g++ -Wall -Wextra -Werror -Wpedantic -std=c++23 %s -o %s && %s",
+    hs = "ghc %s -o %s && %s",
 }
 
 -- Mapping of file extensions to interpret commands.

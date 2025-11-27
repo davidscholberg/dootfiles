@@ -62,6 +62,9 @@ vim.o.softtabstop = 0
 vim.o.shiftwidth = 0
 vim.o.shiftround = true
 
+-- Language-specific tab and indent settings
+vim.api.nvim_command("autocmd FileType haskell setlocal tabstop=2")
+
 -- Allow project-specific configs to be loaded
 vim.opt.exrc = true
 vim.opt.secure = true

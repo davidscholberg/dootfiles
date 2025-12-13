@@ -2,6 +2,7 @@
 
 local colors = require("include.colors")
 
+-- Syntax highlighting shiz
 vim.api.nvim_set_hl(0, "Function", {fg = colors.dark_cyan})
 vim.api.nvim_set_hl(0, "Statement", {fg = colors.lavender})
 vim.api.nvim_set_hl(0, "Constant", {fg = colors.orange})
@@ -18,3 +19,10 @@ vim.api.nvim_set_hl(0, "@string.escape", {link = "String"})
 vim.api.nvim_set_hl(0, "@character", {link = "String"})
 vim.api.nvim_set_hl(0, "@constant.builtin", {link = "Constant"})
 vim.api.nvim_set_hl(0, "@type.builtin", {link = "Type"})
+
+-- Window styling shiz
+vim.api.nvim_set_hl(0, "NormalFloat", {link = "Normal"})
+vim.api.nvim_set_hl(0, "WinSeparator", {fg = colors.dark_grey})
+vim.api.nvim_set_hl(0, "FloatBorder", {link = "WinSeparator"})
+vim.api.nvim_set_hl(0, "TelescopeBorder", {link = "FloatBorder"})
+vim.api.nvim_set_hl(0, "TelescopeTitle", {fg = "NvimLightGrey4"})

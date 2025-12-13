@@ -69,9 +69,6 @@ vim.api.nvim_command("autocmd FileType haskell setlocal tabstop=2")
 vim.opt.exrc = true
 vim.opt.secure = true
 
--- Make floating window styling more consistent
-vim.api.nvim_set_hl(0, "NormalFloat", {link = "Normal"})
-
 -- Set custom colorscheme
 require("include.colorscheme")
 

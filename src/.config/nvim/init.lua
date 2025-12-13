@@ -72,24 +72,8 @@ vim.opt.secure = true
 -- Make floating window styling more consistent
 vim.api.nvim_set_hl(0, "NormalFloat", {link = "Normal"})
 
--- Set/modify colors for better syntax highlighting
-local colors = require("include.colors")
-vim.api.nvim_set_hl(0, "Function", {fg = colors.dark_cyan})
-vim.api.nvim_set_hl(0, "Statement", {fg = colors.lavender})
-vim.api.nvim_set_hl(0, "Constant", {fg = colors.orange})
-vim.api.nvim_set_hl(0, "PreProc", {fg = colors.orange})
-vim.api.nvim_set_hl(0, "Type", {fg = colors.green})
-vim.api.nvim_set_hl(0, "Special", {fg = colors.green})
-vim.api.nvim_set_hl(0, "String", {fg = colors.light_green})
-vim.api.nvim_set_hl(0, "Identifier", {link = "@variable"})
-vim.api.nvim_set_hl(0, "@variable.builtin", {link = "@variable"})
-vim.api.nvim_set_hl(0, "@constructor", {link = "Function"})
-vim.api.nvim_set_hl(0, "@function.builtin", {link = "Function"})
-vim.api.nvim_set_hl(0, "@string.regexp", {link = "String"})
-vim.api.nvim_set_hl(0, "@string.escape", {link = "String"})
-vim.api.nvim_set_hl(0, "@character", {link = "String"})
-vim.api.nvim_set_hl(0, "@constant.builtin", {link = "Constant"})
-vim.api.nvim_set_hl(0, "@type.builtin", {link = "Type"})
+-- Set custom colorscheme
+require("include.colorscheme")
 
 -- Load plugin spec
 require("include.paq_spec")

@@ -15,6 +15,7 @@ declare -a dotfiles=(
     ".config/glirc/config"
     ".config/nvim/init.lua"
     ".config/nvim/lua/include/colors.lua"
+    ".config/nvim/lua/include/colorscheme.lua"
     ".config/nvim/lua/include/paq_spec.lua"
     ".config/nvim/lua/include/paths.lua"
     ".config/nvim/lua/include/strings.lua"

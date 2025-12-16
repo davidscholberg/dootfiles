@@ -64,25 +64,25 @@ vim.lsp.enable("clojure_lsp")
 vim.lsp.enable("hls")
 
 -- Setup general lsp keybindings
-vim.keymap.set("n", "gl", "<cmd>lua vim.diagnostic.open_float({border = \"rounded\"})<cr>")
-vim.keymap.set("n", "[d", "<cmd>lua vim.diagnostic.jump({count = -1, float = {border = \"rounded\"}})<cr>")
-vim.keymap.set("n", "]d", "<cmd>lua vim.diagnostic.jump({count = 1, float = {border = \"rounded\"}})<cr>")
+vim.keymap.set("n", "gl", function() vim.diagnostic.open_float({border = "rounded"}) end)
+vim.keymap.set("n", "[d", function() vim.diagnostic.jump({count = -1, float = {border = "rounded"}}) end)
+vim.keymap.set("n", "]d", function() vim.diagnostic.jump({count = 1, float = {border = "rounded"}}) end)
 vim.api.nvim_create_autocmd(
     "LspAttach",
     {
         desc = "LSP actions",
         callback = function(event)
             local opts = {buffer = event.buf}
-            vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover({border = \"rounded\"})<cr>", opts)
-            vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
-            vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
-            vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>", opts)
-            vim.keymap.set("n", "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>", opts)
-            vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>", opts)
-            vim.keymap.set("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)
-            vim.keymap.set("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
-            vim.keymap.set({"n", "x"}, "<F3>", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", opts)
-            vim.keymap.set("n", "<F4>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+            vim.keymap.set("n", "K", function() vim.lsp.buf.hover({border = "rounded"}) end, opts)
+            vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+            vim.keymap.set("n", "gD", function() vim.lsp.buf.declaration() end, opts)
+            vim.keymap.set("n", "gi", function() vim.lsp.buf.implementation() end, opts)
+            vim.keymap.set("n", "go", function() vim.lsp.buf.type_definition() end, opts)
+            vim.keymap.set("n", "gr", function() vim.lsp.buf.references() end, opts)
+            vim.keymap.set("n", "gs", function() vim.lsp.buf.signature_help({border = "rounded"}) end, opts)
+            vim.keymap.set("n", "<F2>", function() vim.lsp.buf.rename() end, opts)
+            vim.keymap.set({"n", "x"}, "<F3>", function() vim.lsp.buf.format({async = true}) end, opts)
+            vim.keymap.set("n", "<F4>", function() vim.lsp.buf.code_action() end, opts)
         end
     }
 )

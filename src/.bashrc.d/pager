@@ -1,0 +1,1 @@
+export MANPAGER="nvim --cmd \"luafile $HOME/.config/nvim/lua/include/pager/man.lua\""

@@ -61,7 +61,20 @@ vim.lsp.enable("clangd")
 vim.lsp.enable("clojure_lsp")
 
 -- Setup haskell-language-server
-vim.lsp.enable("hls")
+vim.lsp.config( "hls", {
+    settings = {
+        haskell = {
+            plugin = {
+                hlint = {
+                    -- temp fix for https://github.com/haskell/haskell-language-server/issues/4674
+                    -- should be fixed in 2.13.0.0
+                    globalOn = false,
+                },
+            },
+        },
+    },
+})
+vim.lsp.enable( "hls")
 
 -- Setup general lsp keybindings
 vim.keymap.set("n", "gl", function() vim.diagnostic.open_float({border = "rounded"}) end)

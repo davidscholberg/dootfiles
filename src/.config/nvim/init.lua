@@ -23,7 +23,7 @@ vim.keymap.set("n", "<C-j>", "<ScrollWheelDown>", {})
 vim.keymap.set("n", "<C-k>", "<ScrollWheelUp>", {})
 vim.keymap.set("n", "<C-l>", "<ScrollWheelRight>", {})
 vim.opt.list = true
-vim.opt.listchars = {extends = ">", precedes = "<"}
+vim.opt.listchars = {extends = ">", precedes = "<", tab = "  "}
 vim.opt.fillchars = {eob = " "}
 vim.cmd("autocmd FileType markdown,text setlocal wrap linebreak")
 

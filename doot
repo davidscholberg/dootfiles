@@ -11,6 +11,7 @@ declare -a dotfiles=(
     ".bashrc.d/nvim"
     ".bashrc.d/pager"
     ".bashrc.d/vscode"
+    ".bashrc.d/zen_c"
     ".config/clangd/config.yaml"
     ".config/gdb/gdbinit"
     ".config/glirc/config"

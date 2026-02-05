@@ -43,6 +43,7 @@ declare -a dotfiles=(
     ".gitconfig"
     ".var/app/io.mpv.Mpv/config/mpv/mpv.conf"
     ".var/app/org.wezfurlong.wezterm/config/wezterm/${HOSTNAME}_wezterm.lua"
+    ".vimrc"
 )
 
 base_src_dir="src"

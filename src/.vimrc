@@ -1,6 +1,10 @@
 " Disable intro message
 set shortmess+=I
 
+" Enable filetype detection, and plugin/indent scripts to be loaded
+filetype indent plugin on
+packadd comment
+
 " Map leader to space
 let mapleader = " "
 

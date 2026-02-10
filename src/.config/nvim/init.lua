@@ -69,6 +69,13 @@ vim.api.nvim_command("autocmd FileType haskell setlocal tabstop=2")
 vim.opt.exrc = true
 vim.opt.secure = true
 
+-- Create general terminal buffer with key combo to focus it.
+require("include.terminals").setup({
+    general = {
+        focus_key_binding = "<leader>1",
+    },
+})
+
 -- Set custom colorscheme
 require("include.colorscheme")
 

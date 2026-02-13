@@ -24,17 +24,21 @@ vim.api.nvim_create_autocmd(
                     lualine_a = {{
                         "mode",
                         fmt = function() return "pager" end,
-                        color = {bg = colors.light_grey, gui = "bold"},
+                        color = {fg = colors.light_grey, gui = "bold"},
                     }},
                     lualine_b = {},
                     lualine_x = {},
-                    lualine_y = {{
-                        "progress",
-                        color = {fg = colors.light_grey},
-                    }},
+                    lualine_y = {
+                        function ()
+                            return tostring(vim.fn.line("$")) .. "L"
+                        end
+                    },
                     lualine_z = {{
                         "location",
-                        color = {bg = colors.light_grey, gui = "bold"},
+                        fmt = function(s)
+                            return s:gsub("^%s*(.-):(.-)%s*$", "%1,%2")
+                        end,
+                        color = {fg = colors.light_grey, gui = "bold"},
                     }},
                 },
             })

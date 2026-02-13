@@ -31,6 +31,17 @@ local function get_terminal_bufnr(name)
     return -1
 end
 
+-- Get name of terminal associated with bufnr, or nil if there's no association.
+function M.get_terminal_name(bufnr)
+    for name, terminal in pairs(terminals) do
+        if terminal.bufnr and terminal.bufnr == bufnr then
+            return name
+        end
+    end
+
+    return nil
+end
+
 -- Get name of shell used in terminals. For now assumes that only the global value is used.
 function M.get_shell_name()
     return vim.fs.basename(vim.o.shell):gsub([[(.+)%.exe]], "%1")

@@ -18,16 +18,20 @@ vim.keymap.set("i", "<C-c>", "<Esc>", {})
 
 -- Scroll type shit
 vim.opt.wrap = false
-vim.keymap.set("n", "<C-h>", "<ScrollWheelLeft>", {})
-vim.keymap.set("n", "<C-j>", "<ScrollWheelDown>", {})
-vim.keymap.set("n", "<C-k>", "<ScrollWheelUp>", {})
-vim.keymap.set("n", "<C-l>", "<ScrollWheelRight>", {})
+vim.keymap.set("n", "<C-h>", "6zh", {})
+vim.keymap.set("n", "<C-j>", "3<C-e>", {})
+vim.keymap.set("n", "<C-k>", "3<C-y>", {})
+vim.keymap.set("n", "<C-l>", "6zl", {})
 vim.opt.list = true
 vim.opt.listchars = {extends = ">", precedes = "<", tab = "  "}
 vim.opt.fillchars = {eob = " "}
 vim.cmd("autocmd FileType markdown,text setlocal wrap linebreak")
 
 -- Window handling
+vim.o.splitright = true
+vim.o.splitbelow = true
+-- open help/man in vert window
+vim.cmd("autocmd FileType help,man wincmd L")
 vim.keymap.set("n", "<M-h>", "<C-w>h", {})
 vim.keymap.set("n", "<M-j>", "<C-w>j", {})
 vim.keymap.set("n", "<M-k>", "<C-w>k", {})

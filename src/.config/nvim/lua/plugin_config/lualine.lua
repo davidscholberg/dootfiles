@@ -52,7 +52,15 @@ require("lualine").setup({
                 return s
             end
         }},
-        lualine_x = {'fileformat'},
+        lualine_x = {{
+            "fileformat",
+            fmt = function (s)
+                if s == "unix" then
+                    return ""
+                end
+                return s
+            end,
+        }},
         lualine_y = {
             function ()
                 return tostring(vim.fn.line("$")) .. "L"

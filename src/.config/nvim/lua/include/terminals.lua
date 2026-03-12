@@ -137,4 +137,13 @@ function M.setup(terminal_configs)
     end
 end
 
+-- Set focus keybinding for a specific terminal buffer.
+function M.set_keybind(name, focus_key_binding)
+    M.setup({
+        [name] = {
+            focus_key_binding = focus_key_binding,
+        },
+    })
+end
+
 return M

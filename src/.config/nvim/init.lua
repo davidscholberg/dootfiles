@@ -48,11 +48,11 @@ end, {})
 
 -- Tab handling
 vim.keymap.set("n", "<leader>z", ":$tab split<CR>", {})
-vim.api.nvim_command("autocmd TabClosed * tabprevious")
+vim.cmd("autocmd TabClosed * tabprevious")
 
 -- Terminal settings
 vim.keymap.set("t", "<C-\\>", "<C-\\><C-n>", {})
-vim.api.nvim_command("autocmd TermOpen * setlocal nonumber norelativenumber scrolloff=0")
+vim.cmd("autocmd TermOpen * setlocal nonumber norelativenumber scrolloff=0")
 
 -- Line settings
 vim.wo.relativenumber = true
@@ -67,18 +67,18 @@ vim.o.shiftwidth = 0
 vim.o.shiftround = true
 
 -- Language-specific tab and indent settings
-vim.api.nvim_command("autocmd FileType haskell setlocal tabstop=2")
+vim.cmd("autocmd FileType haskell setlocal tabstop=2")
 
 -- Allow project-specific configs to be loaded
 vim.opt.exrc = true
 vim.opt.secure = true
 
+-- Convenience commands for project-specific configs
+vim.cmd("command ProjectConfig :e .nvim.lua")
+vim.cmd("command -bar TrustAndLoad :trust | :luafile %")
+
 -- Create general terminal buffer with key combo to focus it.
-require("include.terminals").setup({
-    general = {
-        focus_key_binding = "<leader>1",
-    },
-})
+require("include.terminals").set_keybind("general", "<leader>1")
 
 -- Set custom colorscheme
 require("include.colorscheme")

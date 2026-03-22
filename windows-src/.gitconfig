@@ -1,1 +1,39 @@
-../src/.gitconfig
+[user]
+    email = recombinant.vector@gmail.com
+    name = David Scholberg
+
+[color]
+    ui = true
+
+[push]
+    default = current
+
+[pull]
+    rebase = true
+
+[alias]
+    in = "!git remote update -p > /dev/null; git log ..@{u}"
+    out = "!git remote update -p > /dev/null; git log @{u}.."
+    squash-n = "!git reset --soft HEAD~\"$1\" #"
+    squash-to = "!git reset --soft \"$1\" #"
+    s = status
+    a = add
+    d = diff
+    dc = diff --cached
+    c = commit
+    ca = commit --amend
+    ch = checkout
+    ps = push
+    pl = pull
+
+[init]
+    defaultBranch = main
+
+[core]
+    editor = nvim
+
+[commit]
+    verbose = true
+
+[pager]
+    diff = "nvim --cmd \"luafile $LOCALAPPDATA\\nvim\\lua\\include\\pager\\general.lua\""

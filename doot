@@ -6,7 +6,7 @@ declare -a dotfiles=(
     ".bashrc.d/00_home_bin"
     ".bashrc.d/mpv"
     ".bashrc.d/oci"
-    ".bashrc.d/starship"
+    ".bashrc.d/shell_prompt"
     ".bashrc.d/tmp"
     ".bashrc.d/nvim"
     ".bashrc.d/pager"

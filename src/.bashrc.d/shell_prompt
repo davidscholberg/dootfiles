@@ -1,0 +1,5 @@
+prompterino_pcmd() {
+    PS1="$(prompterino)"
+}
+
+PROMPT_COMMAND="prompterino_pcmd"

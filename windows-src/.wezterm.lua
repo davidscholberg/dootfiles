@@ -36,6 +36,6 @@ wezterm.on(
 )
 
 -- Disable cmd start text
-config.default_prog = {"cmd.exe", "/k"}
+config.default_prog = {"pwsh.exe"}
 
 return config

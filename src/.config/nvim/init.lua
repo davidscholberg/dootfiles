@@ -53,6 +53,20 @@ vim.cmd("autocmd TabClosed * tabprevious")
 -- Terminal settings
 vim.keymap.set("t", "<C-\\>", "<C-\\><C-n>", {})
 vim.cmd("autocmd TermOpen * setlocal nonumber norelativenumber scrolloff=0")
+-- Windows shell shit
+if vim.fn.has("win32") == 1 then
+    vim.opt.shelltemp = false
+    vim.opt.shell = "pwsh"
+    local shell_flags = "-NoLogo -ExecutionPolicy RemoteSigned -Command "
+    shell_flags = shell_flags .. "[Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();"
+    shell_flags = shell_flags .. "$PSDefaultParameterValues['Out-File:Encoding']='utf8';"
+    shell_flags = shell_flags .. "$PSStyle.OutputRendering = 'PlainText';"
+    vim.opt.shellcmdflag = shell_flags
+    vim.opt.shellpipe = "> %s 2>&1"
+    vim.opt.shellquote = ""
+    vim.opt.shellxquote = ""
+    vim.env.__SuppressAnsiEscapeSequences = "1"
+end
 
 -- Line settings
 vim.wo.relativenumber = true

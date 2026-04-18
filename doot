@@ -34,6 +34,7 @@ declare -a dotfiles=(
     ".config/nvim/lua/scripts/execute_current_file.lua"
     ".config/nvim/lua/scripts/init.lua"
     ".config/starship.toml"
+    ".config/tmux/tmux.conf"
     ".gitconfig"
     ".var/app/io.mpv.Mpv/config/mpv/mpv.conf"
     ".var/app/org.wezfurlong.wezterm/config/wezterm/${HOSTNAME}_wezterm.lua"

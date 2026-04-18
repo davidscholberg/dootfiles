@@ -16,12 +16,9 @@ end
 local paq = require("paq")
 paq({
 
-    -- common deps
-    "nvim-tree/nvim-web-devicons",
-
     -- leap
     "tpope/vim-repeat",
-    "ggandor/leap.nvim",
+    "https://codeberg.org/andyg/leap.nvim",
 
     -- lsp
     "hrsh7th/nvim-cmp",
@@ -44,6 +41,7 @@ paq({
     -- treesitter
     {
         "nvim-treesitter/nvim-treesitter",
+        branch = "master",
         build = ":TSUpdate",
     },
 })

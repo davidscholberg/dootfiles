@@ -16,6 +16,20 @@ require("nvim-tree").setup({
     git = {
         enable = false,
     },
+    renderer = {
+        icons = {
+            show = {
+                file = false,
+                folder = false,
+                git = false,
+                modified = false,
+                hidden = false,
+                diagnostics = false,
+                bookmarks = false,
+                folder_arrow = false,
+            },
+        },
+    },
 })
 
 vim.keymap.set("n", "<leader>e", ":NvimTreeFindFileToggle<CR>", {})

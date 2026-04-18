@@ -25,6 +25,7 @@ declare -a dotfiles=(
     ".config/nvim/lua/include/strings.lua"
     ".config/nvim/lua/include/terminals.lua"
     ".config/nvim/lua/plugin_config/init.lua"
+    ".config/nvim/lua/plugin_config/leap.lua"
     ".config/nvim/lua/plugin_config/lsp.lua"
     ".config/nvim/lua/plugin_config/lualine.lua"
     ".config/nvim/lua/plugin_config/nvim-tree.lua"

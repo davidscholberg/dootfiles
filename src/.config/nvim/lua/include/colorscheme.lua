@@ -2,6 +2,8 @@
 
 local colors = require("include.colors")
 
+vim.opt.termguicolors = true
+
 -- Syntax highlighting shiz
 vim.api.nvim_set_hl(0, "Function", {fg = colors.dark_cyan})
 vim.api.nvim_set_hl(0, "Statement", {fg = colors.lavender})

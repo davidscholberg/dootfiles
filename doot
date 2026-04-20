@@ -13,6 +13,7 @@ declare -a dotfiles=(
     ".bashrc.d/vscode"
     ".bashrc.d/zen_c"
     ".config/clangd/config.yaml"
+    ".config/conky/conky.conf"
     ".config/gdb/gdbinit"
     ".config/glirc/config"
     ".config/nvim/init.lua"

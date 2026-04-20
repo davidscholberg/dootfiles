@@ -318,8 +318,19 @@
   </keybind>
 
   <!-- Misc keybindings -->
+  <keybind key="W-r">
+    <action name="Reconfigure"/>
+  </keybind>
+
   <keybind key="W-BackSpace">
     <action name="Exit"/>
+  </keybind>
+
+  <keybind key="W-Delete">
+    <action name="Execute">
+      <prompt>Shut this bitch down?</prompt>
+      <command>loginctl poweroff</command>
+    </action>
   </keybind>
 
   <keybind key="XF86AudioRaiseVolume">

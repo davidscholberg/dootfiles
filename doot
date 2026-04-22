@@ -36,6 +36,7 @@ declare -a dotfiles=(
     ".config/nvim/lua/scripts/init.lua"
     ".config/openbox/rc.xml"
     ".config/starship.toml"
+    ".config/tiny/config.yml"
     ".config/tmux/tmux.conf"
     ".gitconfig"
     ".var/app/io.mpv.Mpv/config/mpv/mpv.conf"

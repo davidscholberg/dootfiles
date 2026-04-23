@@ -248,6 +248,9 @@
   <keybind key="W-Down">
     <action name="Unmaximize"/>
   </keybind>
+  <keybind key="W-w">
+    <action name="ToggleDecorations"/>
+  </keybind>
 
   <!-- Keybindings for window switching -->
   <keybind key="A-Tab">

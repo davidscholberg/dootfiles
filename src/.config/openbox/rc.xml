@@ -326,19 +326,8 @@
     </action>
   </keybind>
 
-  <!-- Keybindings for window switching with the arrow keys -->
-
   <!-- Keybindings for running applications -->
   <keybind key="W-e">
-    <action name="Execute">
-      <startupnotify>
-        <enabled>true</enabled>
-        <name>Konqueror</name>
-      </startupnotify>
-      <command>kfmclient openProfile filemanagement</command>
-    </action>
-  </keybind>
-  <keybind key="W-p">
     <action name="Execute">
       <command>rofi -show drun</command>
     </action>

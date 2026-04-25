@@ -71,7 +71,7 @@ defaults:
     # notify: [off|mentions|messages]
 
 # Location for chat logs.
-log_dir: "/home/dhscholb/.local/shar/tiny/tiny_logs"
+log_dir: "/home/dhscholb/.local/share/tiny/tiny_logs"
 
 # Limits the maximum number of messages stored in each tab. Default is
 # unlimited.
@@ -145,7 +145,7 @@ colors:
         bg: navy
 
     highlight:
-        fg: red
+        fg: default
         bg: default
         attrs: [bold]
 

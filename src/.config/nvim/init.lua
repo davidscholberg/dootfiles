@@ -9,6 +9,7 @@ vim.g.mapleader = " "
 vim.opt.shortmess:append("I")
 
 -- General keybindings
+vim.keymap.set("n", "<leader>v", "^vg_", {})
 vim.keymap.set("n", "<leader>a", "ggVG", {})
 vim.keymap.set("n", "<leader>y", "\"+y", {})
 vim.keymap.set("v", "<leader>y", "\"+y", {})

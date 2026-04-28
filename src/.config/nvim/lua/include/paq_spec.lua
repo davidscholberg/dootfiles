@@ -31,6 +31,9 @@ paq({
     -- nvim-tree
     "nvim-tree/nvim-tree.lua",
 
+    -- surround
+    "tpope/vim-surround",
+
     -- telescope
     "nvim-lua/plenary.nvim",
     {

@@ -17,6 +17,7 @@ require("nvim-tree").setup({
         enable = false,
     },
     renderer = {
+        add_trailing = true,
         icons = {
             show = {
                 file = false,

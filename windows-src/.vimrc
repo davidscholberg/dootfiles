@@ -4,6 +4,7 @@ set shortmess+=I
 " Enable filetype detection, and plugin/indent scripts to be loaded
 filetype indent plugin on
 packadd comment
+syntax on
 
 " Map leader to space
 let mapleader = " "
@@ -32,10 +33,10 @@ set fillchars=eob:\ ,vert:│
 autocmd FileType markdown,text setlocal wrap linebreak
 
 " Window handling
-nnoremap <Esc>h <C-w>h
-nnoremap <Esc>j <C-w>j
-nnoremap <Esc>k <C-w>k
-nnoremap <Esc>l <C-w>l
+nnoremap <M-h> <C-w>h
+nnoremap <M-j> <C-w>j
+nnoremap <M-k> <C-w>k
+nnoremap <M-l> <C-w>l
 set splitright
 set splitbelow
 autocmd FileType help,man wincmd L
@@ -58,6 +59,18 @@ function! ToggleTerminal()
   endif
 endfunction
 nnoremap <leader>1 :call ToggleTerminal()<CR>
+
+" Use pwsh for terminal
+set noshelltemp
+let &shell = 'pwsh'
+let &shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command '
+let &shellcmdflag .= '[Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();'
+let &shellcmdflag .= '$PSDefaultParameterValues[''Out-File:Encoding'']=''utf8'';'
+let &shellcmdflag .= '$PSStyle.OutputRendering = ''PlainText'';'
+let &shellpipe  = '> %s 2>&1'
+set shellquote= shellxquote=
+" Workaround (may not be needed in future version of pwsh):
+let $__SuppressAnsiEscapeSequences = 1
 
 " Allow buffer switching when current buffer is modified
 set hidden
@@ -86,7 +99,7 @@ set shiftround
 autocmd FileType haskell setlocal tabstop=2
 
 " Put swap files in central location
-set directory=~/tmp,/var/tmp,/tmp
+set directory=~\AppData\Local\Temp,c:\tmp,c:\temp
 
 " Allow project-specific configs
 set exrc

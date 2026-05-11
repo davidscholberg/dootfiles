@@ -30,10 +30,6 @@
     defaultBranch = main
 
 [core]
-    editor = nvim
-
+    editor = "/c/Program\\ Files/Vim/vim92/vim.exe"
 [commit]
     verbose = true
-
-[pager]
-    diff = "nvim --cmd \"luafile $LOCALAPPDATA\\nvim\\lua\\include\\pager\\general.lua\""

@@ -18,8 +18,8 @@ config.color_scheme = "Builtin Tango Dark Custom"
 -- Set window title
 wezterm.on(
     "format-window-title",
-    function (tab, pane, tabs, panes, config)
-        return ""
+    function ()
+        return "wezterm"
     end
 )
 

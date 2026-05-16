@@ -25,6 +25,9 @@ nnoremap <leader>v ^vg_
 nnoremap <leader>a ggVG
 nnoremap <leader>y "+y
 vnoremap <leader>y "+y
+nnoremap <leader>p "+p
+vnoremap <leader>p "+p
+nnoremap <leader>P "+P
 nnoremap <leader>/ :nohlsearch<CR>
 nnoremap <leader>` :b#<CR>
 inoremap <C-c> <Esc>

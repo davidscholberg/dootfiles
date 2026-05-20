@@ -9,7 +9,7 @@ syntax enable
 " Map leader to space
 let mapleader = " "
 
-" Netrwwwwwwwwww
+" Netrwwwwwwwwww (this is mostly pointless because vim-fern, but meh)
 let g:netrw_altfile = 1
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
@@ -188,14 +188,17 @@ function! GetLinterStatus() abort
 endfunction
 augroup ALELSPMaps
     autocmd!
-    autocmd User ALELSPStarted nnoremap K  :ALEHover<CR>
-    autocmd User ALELSPStarted nnoremap gd :ALEGoToDefinition<CR>
+    " TODO: i'm not sure how to get these mappings to only apply to
+    " ALE-managed buffers if ALELSPStarted only fires on the first relevant
+    " buffer opened
+    autocmd User ALELSPStarted nnoremap <buffer> K  :ALEHover<CR>
+    autocmd User ALELSPStarted nnoremap <buffer> gd :ALEGoToDefinition<CR>
     " can't wait for this shit to drop, gonna be epic
-    " autocmd User ALELSPStarted nnoremap gD :ALEGoToDeclaration<CR>
-    autocmd User ALELSPStarted nnoremap gr :ALEFindReferences<CR>
-    autocmd User ALELSPStarted nnoremap gl :ALEDetail<CR>
-    autocmd User ALELSPStarted nnoremap [d :ALEPreviousWrap<CR>
-    autocmd User ALELSPStarted nnoremap ]d :ALENextWrap<CR>
+    " autocmd User ALELSPStarted nnoremap <buffer> gD :ALEGoToDeclaration<CR>
+    autocmd User ALELSPStarted nnoremap <buffer> gr :ALEFindReferences<CR>
+    autocmd User ALELSPStarted nnoremap <buffer> gl :ALEDetail<CR>
+    autocmd User ALELSPStarted nnoremap <buffer> [d :ALEPreviousWrap<CR>
+    autocmd User ALELSPStarted nnoremap <buffer> ]d :ALENextWrap<CR>
 augroup END
 
 " fzf
@@ -237,6 +240,26 @@ if has("termguicolors")
 endif
 let g:neato_hl_func_calls = 1
 colorscheme neato
+
+" vim-fern
+call minpac#add('lambdalisue/vim-fern')
+let g:fern#default_hidden = 1
+let g:fern#keepalt_on_edit = 1
+let g:fern#keepjumps_on_edit = 1
+nnoremap <leader>e :Fern . -reveal=%<CR>
+augroup fern_config
+    autocmd!
+    autocmd FileType fern setlocal nobuflisted
+    " NOTE: This has to be BufEnter instead of FileType in order to override
+    " the default mapping for `a`.
+    autocmd BufEnter fern://* nnoremap <buffer> a <Plug>(fern-action-new-path)
+    autocmd FileType fern nnoremap <buffer> <CR> <Plug>(fern-action-open-or-expand)
+    autocmd FileType fern nnoremap <buffer> d <Plug>(fern-action-remove)
+    autocmd FileType fern nnoremap <buffer> c <Plug>(fern-action-clipboard-copy)
+    autocmd FileType fern nnoremap <buffer> x <Plug>(fern-action-clipboard-move)
+    " TODO: would be freakin neato if this didn't prompt on move
+    autocmd FileType fern nnoremap <buffer> p <Plug>(fern-action-clipboard-paste)
+augroup END
 
 " vim-fugitive
 call minpac#add('tpope/vim-fugitive')

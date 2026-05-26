@@ -9,7 +9,7 @@ syntax enable
 " Map leader to space
 let mapleader = " "
 
-" Netrwwwwwwwwww
+" Netrwwwwwwwwww (this is mostly pointless because vim-fern, but meh)
 let g:netrw_altfile = 1
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
@@ -188,14 +188,14 @@ function! GetLinterStatus() abort
 endfunction
 augroup ALELSPMaps
     autocmd!
-    autocmd User ALELSPStarted nnoremap K  :ALEHover<CR>
-    autocmd User ALELSPStarted nnoremap gd :ALEGoToDefinition<CR>
+    autocmd User ALELSPStarted nnoremap <buffer> K  :ALEHover<CR>
+    autocmd User ALELSPStarted nnoremap <buffer> gd :ALEGoToDefinition<CR>
     " can't wait for this shit to drop, gonna be epic
-    " autocmd User ALELSPStarted nnoremap gD :ALEGoToDeclaration<CR>
-    autocmd User ALELSPStarted nnoremap gr :ALEFindReferences<CR>
-    autocmd User ALELSPStarted nnoremap gl :ALEDetail<CR>
-    autocmd User ALELSPStarted nnoremap [d :ALEPreviousWrap<CR>
-    autocmd User ALELSPStarted nnoremap ]d :ALENextWrap<CR>
+    " autocmd User ALELSPStarted nnoremap <buffer> gD :ALEGoToDeclaration<CR>
+    autocmd User ALELSPStarted nnoremap <buffer> gr :ALEFindReferences<CR>
+    autocmd User ALELSPStarted nnoremap <buffer> gl :ALEDetail<CR>
+    autocmd User ALELSPStarted nnoremap <buffer> [d :ALEPreviousWrap<CR>
+    autocmd User ALELSPStarted nnoremap <buffer> ]d :ALENextWrap<CR>
 augroup END
 
 " fzf
@@ -235,8 +235,39 @@ call minpac#add('davidscholberg/neato.vim')
 if has("termguicolors")
     set termguicolors
 endif
+" shit for gvim (almost never use it but still)
+set guioptions+=d
+set guioptions-=e
+set guioptions-=m
+set guioptions-=T
+set guioptions-=r
+set guioptions-=R
+set guioptions-=l
+set guioptions-=L
+set guioptions-=b
 let g:neato_hl_func_calls = 1
 colorscheme neato
+
+" vim-fern
+" TODO: need to manually manage vim-fern until
+" https://github.com/lambdalisue/vim-fern/pull/552 is merged.
+" call minpac#add('lambdalisue/vim-fern')
+let g:fern#default_hidden = 1
+let g:fern#keepalt_on_edit = 1
+let g:fern#keepjumps_on_edit = 1
+nnoremap <leader>e :Fern . -reveal=%<CR>
+augroup fern_config
+    autocmd!
+    autocmd FileType fern setlocal nobuflisted
+    " NOTE: This has to be BufEnter instead of FileType in order to override
+    " the default mapping for `a`.
+    autocmd BufEnter fern://* nnoremap <buffer> a <Plug>(fern-action-new-path)
+    autocmd FileType fern nnoremap <buffer> <CR> <Plug>(fern-action-open-or-expand)
+    autocmd FileType fern nnoremap <buffer> d <Plug>(fern-action-remove)
+    autocmd FileType fern nnoremap <buffer> c <Plug>(fern-action-clipboard-copy)
+    autocmd FileType fern nnoremap <buffer> x <Plug>(fern-action-clipboard-move)
+    autocmd FileType fern nnoremap <buffer> p <Plug>(fern-action-clipboard-paste-immediate)
+augroup END
 
 " vim-fugitive
 call minpac#add('tpope/vim-fugitive')

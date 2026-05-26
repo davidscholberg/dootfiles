@@ -188,9 +188,6 @@ function! GetLinterStatus() abort
 endfunction
 augroup ALELSPMaps
     autocmd!
-    " TODO: i'm not sure how to get these mappings to only apply to
-    " ALE-managed buffers if ALELSPStarted only fires on the first relevant
-    " buffer opened
     autocmd User ALELSPStarted nnoremap <buffer> K  :ALEHover<CR>
     autocmd User ALELSPStarted nnoremap <buffer> gd :ALEGoToDefinition<CR>
     " can't wait for this shit to drop, gonna be epic
@@ -238,11 +235,23 @@ call minpac#add('davidscholberg/neato.vim')
 if has("termguicolors")
     set termguicolors
 endif
+" shit for gvim (almost never use it but still)
+set guioptions+=d
+set guioptions-=e
+set guioptions-=m
+set guioptions-=T
+set guioptions-=r
+set guioptions-=R
+set guioptions-=l
+set guioptions-=L
+set guioptions-=b
 let g:neato_hl_func_calls = 1
 colorscheme neato
 
 " vim-fern
-call minpac#add('lambdalisue/vim-fern')
+" TODO: need to manually manage vim-fern until
+" https://github.com/lambdalisue/vim-fern/pull/552 is merged.
+" call minpac#add('lambdalisue/vim-fern')
 let g:fern#default_hidden = 1
 let g:fern#keepalt_on_edit = 1
 let g:fern#keepjumps_on_edit = 1
@@ -257,8 +266,7 @@ augroup fern_config
     autocmd FileType fern nnoremap <buffer> d <Plug>(fern-action-remove)
     autocmd FileType fern nnoremap <buffer> c <Plug>(fern-action-clipboard-copy)
     autocmd FileType fern nnoremap <buffer> x <Plug>(fern-action-clipboard-move)
-    " TODO: would be freakin neato if this didn't prompt on move
-    autocmd FileType fern nnoremap <buffer> p <Plug>(fern-action-clipboard-paste)
+    autocmd FileType fern nnoremap <buffer> p <Plug>(fern-action-clipboard-paste-immediate)
 augroup END
 
 " vim-fugitive
